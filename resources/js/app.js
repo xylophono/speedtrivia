@@ -4,7 +4,7 @@ const axios = require('axios');
 import SpeedTrivia from './classes/SpeedTrivia.js';
 
 let game = new SpeedTrivia;
-game.newGame();
+game.getQuestions();
 
 const app = new Vue({
     el: '#app',

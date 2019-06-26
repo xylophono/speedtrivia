@@ -11,7 +11,7 @@ export default class {
     }
 
     // Create a new game
-    newGame() {
+    getQuestions() {
         axios.get(this.endpoint, {
             params: {
                 amount: this.questions,
@@ -19,6 +19,10 @@ export default class {
             }
         })
         .then((response)=>{
+            if(response.status !== 200 || response.data.response_code !== 0) {
+                return false;
+            }
+
             console.log(response.data.results);
         })
         .catch((err)=>{

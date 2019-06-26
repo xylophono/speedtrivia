@@ -14331,7 +14331,7 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
 
 var game = new _classes_SpeedTrivia_js__WEBPACK_IMPORTED_MODULE_0__["default"]();
-game.newGame();
+game.getQuestions();
 var app = new Vue({
   el: '#app',
   components: {},
@@ -14377,14 +14377,18 @@ function () {
 
 
   _createClass(_default, [{
-    key: "newGame",
-    value: function newGame() {
+    key: "getQuestions",
+    value: function getQuestions() {
       axios.get(this.endpoint, {
         params: {
           amount: this.questions,
           category: 9
         }
       }).then(function (response) {
+        if (response.status !== 200 || response.data.response_code !== 0) {
+          return false;
+        }
+
         console.log(response.data.results);
       })["catch"](function (err) {
         return false;
