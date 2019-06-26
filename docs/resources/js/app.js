@@ -14319,12 +14319,83 @@ module.exports = g;
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
   \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _classes_SpeedTrivia_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./classes/SpeedTrivia.js */ "./resources/js/classes/SpeedTrivia.js");
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+
+
+var game = new _classes_SpeedTrivia_js__WEBPACK_IMPORTED_MODULE_0__["default"]();
+game.newGame();
+var app = new Vue({
+  el: '#app',
+  components: {},
+  data: {},
+  computed: {},
+  methods: {},
+  created: function created() {}
+});
+
+/***/ }),
+
+/***/ "./resources/js/classes/SpeedTrivia.js":
+/*!*********************************************!*\
+  !*** ./resources/js/classes/SpeedTrivia.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _default; });
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+
+var _default =
+/*#__PURE__*/
+function () {
+  function _default() {
+    _classCallCheck(this, _default);
+
+    this.endpoint = 'https://opentdb.com/api.php';
+    this.questions = 8;
+    this.categories = [{
+      name: 'General Knowledge',
+      endpoint: 9
+    }];
+  } // Create a new game
+
+
+  _createClass(_default, [{
+    key: "newGame",
+    value: function newGame() {
+      axios.get(this.endpoint, {
+        params: {
+          amount: this.questions,
+          category: 9
+        }
+      }).then(function (response) {
+        console.log(response.data.results);
+      })["catch"](function (err) {
+        return false;
+      });
+    }
+  }]);
+
+  return _default;
+}();
+
+
 
 /***/ }),
 
