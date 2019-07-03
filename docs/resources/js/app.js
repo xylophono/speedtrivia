@@ -14327,18 +14327,38 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _classes_SpeedTrivia_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./classes/SpeedTrivia.js */ "./resources/js/classes/SpeedTrivia.js");
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 
-var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-
-
 var game = new _classes_SpeedTrivia_js__WEBPACK_IMPORTED_MODULE_0__["default"]();
-game.getQuestions();
 var app = new Vue({
   el: '#app',
   components: {},
-  data: {},
+  data: {
+    gameData: {
+      'questions': [],
+      'meta': {}
+    }
+  },
   computed: {},
-  methods: {},
-  created: function created() {}
+  methods: {
+    newGame: function newGame() {
+      var _this = this;
+
+      this.gameData.questions = [];
+      this.gameData.meta = {};
+      game.getQuestions().then(function (resp) {
+        if (!resp) {
+          alert('failed to get questions');
+        } else {
+          _this.gameData.questions = resp.questions;
+          _this.gameData.meta = resp.meta;
+        }
+      })["catch"](function (err) {
+        alert(err);
+      });
+    }
+  },
+  created: function created() {
+    this.newGame();
+  }
 });
 
 /***/ }),
@@ -14359,7 +14379,8 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js"); // Class to define our basic settings and retrieve categories & questions from the opentdb api
+
 
 var _default =
 /*#__PURE__*/
@@ -14379,7 +14400,9 @@ function () {
   _createClass(_default, [{
     key: "getQuestions",
     value: function getQuestions() {
-      axios.get(this.endpoint, {
+      var _this = this;
+
+      return axios.get(this.endpoint, {
         params: {
           amount: this.questions,
           category: 9
@@ -14389,9 +14412,35 @@ function () {
           return false;
         }
 
-        console.log(response.data.results);
-      })["catch"](function (err) {
-        return false;
+        var rawQuestions = response.data.results;
+        var processedQuestions = {};
+        processedQuestions.questions = [];
+        processedQuestions.meta = {
+          'category': _this.categories[0].name
+        }; //Process the raw Questions into the format we'll use for the game
+
+        rawQuestions.forEach(function (question, index) {
+          var tempQuestions = {};
+          tempQuestions.category = question.category;
+          tempQuestions.question = question.question;
+          tempQuestions.answers = [];
+          tempQuestions.answers.push({
+            'answer': question.correct_answer,
+            'correct': true
+          });
+          question.incorrect_answers.forEach(function (answer) {
+            tempQuestions.answers.push({
+              'answer': answer,
+              'correct': false
+            });
+          }); //Shuffle the answers
+
+          tempQuestions.answers.sort(function () {
+            return 0.5 - Math.random();
+          });
+          processedQuestions.questions.push(tempQuestions);
+        });
+        return processedQuestions;
       });
     }
   }]);

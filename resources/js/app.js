@@ -1,16 +1,39 @@
 window.Vue = require('vue');
-const axios = require('axios');
 
 import SpeedTrivia from './classes/SpeedTrivia.js';
-
 let game = new SpeedTrivia;
-game.getQuestions();
 
 const app = new Vue({
     el: '#app',
     components: {},
-    data: {},
+    data: {
+        gameData: {
+            'questions': [],
+            'meta': {},
+        }
+    },
     computed: {},
-    methods: {},
-    created: function() {}
+    methods: {
+        newGame: function() {
+            this.gameData.questions = [];
+            this.gameData.meta = {};
+
+            game.getQuestions()
+            .then((resp) => {
+                if(!resp) {
+                    alert('failed to get questions');
+                }
+                else {
+                    this.gameData.questions = resp.questions;
+                    this.gameData.meta = resp.meta;
+                }
+            })
+            .catch((err) => {
+                alert(err);
+            });
+        }
+    },
+    created: function() {
+        this.newGame();
+    }
 });
