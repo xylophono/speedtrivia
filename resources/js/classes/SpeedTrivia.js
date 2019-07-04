@@ -77,7 +77,8 @@ export default class {
             },
             'gameState': {
                 active: false,
-                asked: 0
+                activeQuestion: 0,
+                correct: 0
             }
         }
     }
