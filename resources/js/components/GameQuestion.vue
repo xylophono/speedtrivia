@@ -1,11 +1,12 @@
 <template>
     <div>
-        <h1>{{ question }}</h1>
+        <p>{{ question }}</p>
         <div
             v-for="(answer, index) in answers"
             :key="index">
             <button
-               v-on:click.prevent="answerQuestion(index)" 
+               v-on:click.prevent="answerQuestion(index)"
+               class="p" 
             >{{ answer.answer }}</button>
             <br>
         </div>

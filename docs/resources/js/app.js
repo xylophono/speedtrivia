@@ -1911,6 +1911,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2827,13 +2828,14 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("h1", [_vm._v(_vm._s(_vm.question))]),
+      _c("p", [_vm._v(_vm._s(_vm.question))]),
       _vm._v(" "),
       _vm._l(_vm.answers, function(answer, index) {
         return _c("div", { key: index }, [
           _c(
             "button",
             {
+              staticClass: "p",
               on: {
                 click: function($event) {
                   $event.preventDefault()

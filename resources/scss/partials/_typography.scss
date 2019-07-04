@@ -1,0 +1,26 @@
+html, body {
+    font-family: jaf-bernina-sans, $font-stack;
+    font-size: $font-size;
+    color: $text;
+    font-weight: 400;
+    line-height: 1.2;
+    font-style: normal;
+}
+
+p, .p {
+    font-family: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+    font-style: inherit;
+    line-height: inherit;
+    color: inherit;
+}
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+    font-family: proxima-nova, $font-stack;
+    font-weight: 700;
+    font-style: normal;
+    color: inherit;
+    text-transform: uppercase;
+    line-height: 1;
+}
