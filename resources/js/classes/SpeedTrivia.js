@@ -1,4 +1,5 @@
 const axios = require('axios');
+const he = require('he');
 
 // Class to define our basic settings and retrieve categories & questions from the opentdb api
 
@@ -27,30 +28,29 @@ export default class {
 
             let rawQuestions = response.data.results;
             
-            let processedQuestions = {};
+            let processedQuestions = this.clearGameData();
 
-            processedQuestions.questions = [];
-            processedQuestions.meta = {
-                'category': this.categories[0].name
-            };
+            processedQuestions.meta.category = this.categories[0].name;
+            processedQuestions.meta.questions = this.questions;
 
             //Process the raw Questions into the format we'll use for the game
             rawQuestions.forEach((question, index) => {
                 let tempQuestions = {};
 
-                tempQuestions.category = question.category;
-                tempQuestions.question = question.question;
+                tempQuestions.category = he.decode(question.category);
+                tempQuestions.question = he.decode(question.question);
+                tempQuestions.result = false;
 
                 tempQuestions.answers = [];
 
                 tempQuestions.answers.push({
-                    'answer': question.correct_answer,
+                    'answer': he.decode(question.correct_answer),
                     'correct': true
                 });
 
                 question.incorrect_answers.forEach((answer) => {
                     tempQuestions.answers.push({
-                        'answer': answer,
+                        'answer': he.decode(answer),
                         'correct': false
                     });
                 });
@@ -65,5 +65,20 @@ export default class {
             return processedQuestions;
 
         });
+    }
+
+    // Create a blank set of gameData
+    clearGameData() {
+        return {
+            'questions': [],
+            'meta': {
+                'category': '',
+                'questions': null
+            },
+            'gameState': {
+                active: false,
+                asked: 0
+            }
+        }
     }
 }

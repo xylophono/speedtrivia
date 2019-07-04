@@ -8,15 +8,12 @@ const app = new Vue({
     components: {},
     data: {
         gameData: {
-            'questions': [],
-            'meta': {},
         }
     },
     computed: {},
     methods: {
         newGame: function() {
-            this.gameData.questions = [];
-            this.gameData.meta = {};
+            this.gameData = game.clearGameData();
 
             game.getQuestions()
             .then((resp) => {
@@ -24,8 +21,7 @@ const app = new Vue({
                     alert('failed to get questions');
                 }
                 else {
-                    this.gameData.questions = resp.questions;
-                    this.gameData.meta = resp.meta;
+                    this.gameData = resp;
                 }
             })
             .catch((err) => {
