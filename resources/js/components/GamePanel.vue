@@ -10,7 +10,19 @@
             :answers="q.answers"
         ></game-question>
     </div>
-    {{ this.$root.gameData.gameState.correct}} / {{ this.$root.gameData.meta.questions}}
+
+    <div
+        class="question-card"
+        :class="{
+            'question-card--active': $root.gameData.gameState.completed
+        }">
+
+        <div class="question-card__content">
+            <p>{{ this.$root.gameData.gameState.correct}} / {{ this.$root.gameData.meta.questions}}</p>
+            <h1>Good Job Cowboy</h1>
+        </div>
+
+    </div>
 </div>
 </template>
 

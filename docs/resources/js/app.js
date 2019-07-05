@@ -1877,6 +1877,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -1898,6 +1910,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -1952,8 +1965,10 @@ __webpack_require__.r(__webpack_exports__);
         this.$root.gameData.gameState.correct++;
       }
 
-      if (index <= this.$root.gameData.meta.questions - 1) {
+      if (this.id < this.$root.gameData.meta.questions - 1) {
         this.$root.gameData.gameState.activeQuestion++;
+      } else {
+        this.$root.gameData.gameState.completed = true;
       }
     }
   }
@@ -2809,12 +2824,28 @@ var render = function() {
           1
         )
       }),
-      _vm._v(
-        "\r\n    " +
-          _vm._s(this.$root.gameData.gameState.correct) +
-          " / " +
-          _vm._s(this.$root.gameData.meta.questions) +
-          "\r\n"
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "question-card",
+          class: {
+            "question-card--active": _vm.$root.gameData.gameState.completed
+          }
+        },
+        [
+          _c("div", { staticClass: "question-card__content" }, [
+            _c("p", [
+              _vm._v(
+                _vm._s(this.$root.gameData.gameState.correct) +
+                  " / " +
+                  _vm._s(this.$root.gameData.meta.questions)
+              )
+            ]),
+            _vm._v(" "),
+            _c("h1", [_vm._v("Good Job Cowboy")])
+          ])
+        ]
       )
     ],
     2
@@ -2877,6 +2908,7 @@ var render = function() {
                       !_vm.$root.gameData.questions[_vm.id].answers[index]
                         .correct
                   },
+                  attrs: { disabled: _vm.isAnswered },
                   on: {
                     click: function($event) {
                       $event.preventDefault()
@@ -15130,7 +15162,7 @@ function () {
       return axios.get(this.endpoint, {
         params: {
           amount: this.questions,
-          category: 17
+          category: 9
         }
       }).then(function (response) {
         if (response.status !== 200 || response.data.response_code !== 0) {
@@ -15181,6 +15213,7 @@ function () {
         },
         'gameState': {
           active: false,
+          completed: false,
           activeQuestion: 0,
           correct: 0
         }

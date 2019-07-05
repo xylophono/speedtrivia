@@ -18,7 +18,7 @@ export default class {
         return axios.get(this.endpoint, {
             params: {
                 amount: this.questions,
-                category: 17
+                category: 9
             }
         })
         .then((response)=>{
@@ -77,6 +77,7 @@ export default class {
             },
             'gameState': {
                 active: false,
+                completed: false,
                 activeQuestion: 0,
                 correct: 0
             }

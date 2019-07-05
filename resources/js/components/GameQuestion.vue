@@ -18,6 +18,7 @@
                     'question-card__button--true': isAnswered && $root.gameData.questions[id].answers[index].correct,
                     'question-card__button--false': selected == index && isAnswered && !$root.gameData.questions[id].answers[index].correct
                 }" 
+                :disabled="isAnswered"
                 >{{ answer.answer }}</button>
                 <br>
             </div>
@@ -48,11 +49,17 @@
             answerQuestion(index) {
                 this.selected = index;
                 this.isAnswered = true;
+
                 if(this.$root.gameData.questions[this.id].answers[index].correct) {
                     this.$root.gameData.gameState.correct++;
                 }
-                if(index <= this.$root.gameData.meta.questions -1 ) {
+
+                if(this.id < this.$root.gameData.meta.questions -1 ) {
                     this.$root.gameData.gameState.activeQuestion++;
+                }
+
+                else {
+                    this.$root.gameData.gameState.completed = true;
                 }
                 
             }
