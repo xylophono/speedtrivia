@@ -1,14 +1,15 @@
 <template>
 <div>
-    <game-question
+    <div
         v-for="(q, i) in $root.gameData.questions"
-        v-show="$root.gameData.gameState.activeQuestion == i"
         :key="i"
-        :id="parseInt(i)"
-        :question="q.question"
-        :answers="q.answers"
-    ></game-question>
-    <br><br>
+    >
+        <game-question        
+            :id="parseInt(i)"
+            :question="q.question"
+            :answers="q.answers"
+        ></game-question>
+    </div>
     {{ this.$root.gameData.gameState.correct}} / {{ this.$root.gameData.meta.questions}}
 </div>
 </template>

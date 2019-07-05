@@ -1876,6 +1876,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -1912,11 +1913,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      answered: false
+      selected: null,
+      isAnswered: false
     };
+  },
+  computed: {
+    isActive: function isActive() {
+      return this.$root.gameData.gameState.activeQuestion >= this.id;
+    }
   },
   props: {
     id: Number,
@@ -1925,18 +1945,16 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     answerQuestion: function answerQuestion(index) {
-      var _this = this;
+      this.selected = index;
+      this.isAnswered = true;
 
-      if (this.$root.gameData.questions[this.$root.gameData.gameState.activeQuestion].answers[index].correct) {
-        alert('correct');
+      if (this.$root.gameData.questions[this.id].answers[index].correct) {
         this.$root.gameData.gameState.correct++;
-      } else {
-        alert('incorrect');
       }
 
-      window.setTimeout(function () {
-        _this.$root.gameData.gameState.activeQuestion++;
-      }, 1000);
+      if (index <= this.$root.gameData.meta.questions - 1) {
+        this.$root.gameData.gameState.activeQuestion++;
+      }
     }
   }
 });
@@ -2776,22 +2794,21 @@ var render = function() {
     "div",
     [
       _vm._l(_vm.$root.gameData.questions, function(q, i) {
-        return _c("game-question", {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: _vm.$root.gameData.gameState.activeQuestion == i,
-              expression: "$root.gameData.gameState.activeQuestion == i"
-            }
+        return _c(
+          "div",
+          { key: i },
+          [
+            _c("game-question", {
+              attrs: {
+                id: parseInt(i),
+                question: q.question,
+                answers: q.answers
+              }
+            })
           ],
-          key: i,
-          attrs: { id: parseInt(i), question: q.question, answers: q.answers }
-        })
+          1
+        )
       }),
-      _vm._v(" "),
-      _c("br"),
-      _c("br"),
       _vm._v(
         "\r\n    " +
           _vm._s(this.$root.gameData.gameState.correct) +
@@ -2827,30 +2844,56 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
+    {
+      staticClass: "question-card",
+      class: {
+        "question-card--active": _vm.isActive,
+        "question-card--answered": _vm.isAnswered
+      }
+    },
     [
-      _c("p", [_vm._v(_vm._s(_vm.question))]),
-      _vm._v(" "),
-      _vm._l(_vm.answers, function(answer, index) {
-        return _c("div", { key: index }, [
-          _c(
-            "button",
-            {
-              staticClass: "p",
-              on: {
-                click: function($event) {
-                  $event.preventDefault()
-                  return _vm.answerQuestion(index)
-                }
-              }
-            },
-            [_vm._v(_vm._s(answer.answer))]
-          ),
+      _c(
+        "div",
+        { staticClass: "question-card__content" },
+        [
+          _c("p", [_vm._v(_vm._s(_vm.question))]),
           _vm._v(" "),
-          _c("br")
-        ])
-      })
-    ],
-    2
+          _c("br"),
+          _vm._v(" "),
+          _vm._l(_vm.answers, function(answer, index) {
+            return _c("div", { key: index }, [
+              _c(
+                "button",
+                {
+                  staticClass: "question-card__button",
+                  class: {
+                    "question-card__button--true":
+                      _vm.isAnswered &&
+                      _vm.$root.gameData.questions[_vm.id].answers[index]
+                        .correct,
+                    "question-card__button--false":
+                      _vm.selected == index &&
+                      _vm.isAnswered &&
+                      !_vm.$root.gameData.questions[_vm.id].answers[index]
+                        .correct
+                  },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      return _vm.answerQuestion(index)
+                    }
+                  }
+                },
+                [_vm._v(_vm._s(answer.answer))]
+              ),
+              _vm._v(" "),
+              _c("br")
+            ])
+          })
+        ],
+        2
+      )
+    ]
   )
 }
 var staticRenderFns = []
@@ -15087,7 +15130,7 @@ function () {
       return axios.get(this.endpoint, {
         params: {
           amount: this.questions,
-          category: 9
+          category: 17
         }
       }).then(function (response) {
         if (response.status !== 200 || response.data.response_code !== 0) {

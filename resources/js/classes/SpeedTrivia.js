@@ -18,7 +18,7 @@ export default class {
         return axios.get(this.endpoint, {
             params: {
                 amount: this.questions,
-                category: 9
+                category: 17
             }
         })
         .then((response)=>{
