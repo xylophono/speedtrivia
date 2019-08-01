@@ -3,11 +3,13 @@ window.Vue = require('vue');
 import SpeedTrivia from './classes/SpeedTrivia.js';
 let game = new SpeedTrivia;
 
+import GameHome from './components/GameHome.vue';
 import GamePanel from './components/GamePanel.vue';
 
 const app = new Vue({
     el: '#app',
     components: {
+        GameHome,
         GamePanel
     },
     data: {

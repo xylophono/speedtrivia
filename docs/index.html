@@ -13,8 +13,13 @@
 <body>
 
 <div id="app" v-cloak>
+
+    <game-home></game-home>
+    
     <game-panel
+        v-if="gameData.gameState.active"
     ></game-panel>
+
 </div>
 
 </body>
