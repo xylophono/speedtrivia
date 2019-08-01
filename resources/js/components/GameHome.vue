@@ -51,7 +51,7 @@ export default {
             }, 500)
             window.setTimeout(() => {
                 this.started = false;
-            }, 2500)
+            }, 1500)
         }
     }
 }

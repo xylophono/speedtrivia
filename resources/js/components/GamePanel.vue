@@ -19,7 +19,12 @@
 
         <div class="question-card__content">
             <p>{{ this.$root.gameData.gameState.correct}} / {{ this.$root.gameData.meta.questions}}</p>
-            <h1>Good Job Cowboy</h1>
+            <br>
+            <h2>Good Job Cowboy</h2>
+            <br>
+            <button class="button" @click="goHome()">
+                Home
+            </button>
         </div>
 
     </div>
@@ -35,6 +40,11 @@ export default {
     data: function() {
         return {
         }
+    },
+    methods: {
+        goHome: function(){
+            this.$root.resetGame();
+        } 
     }
 }
 </script>

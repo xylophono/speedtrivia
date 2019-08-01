@@ -1911,7 +1911,7 @@ __webpack_require__.r(__webpack_exports__);
       }, 500);
       window.setTimeout(function () {
         _this.started = false;
-      }, 2500);
+      }, 1500);
     }
   }
 });
@@ -1956,6 +1956,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -1963,6 +1968,11 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {};
+  },
+  methods: {
+    goHome: function goHome() {
+      this.$root.resetGame();
+    }
   }
 });
 
@@ -2995,7 +3005,24 @@ var render = function() {
               )
             ]),
             _vm._v(" "),
-            _c("h1", [_vm._v("Good Job Cowboy")])
+            _c("br"),
+            _vm._v(" "),
+            _c("h2", [_vm._v("Good Job Cowboy")]),
+            _vm._v(" "),
+            _c("br"),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "button",
+                on: {
+                  click: function($event) {
+                    return _vm.goHome()
+                  }
+                }
+              },
+              [_vm._v("\n                Home\n            ")]
+            )
           ])
         ]
       )
@@ -15277,10 +15304,13 @@ var app = new Vue({
       })["catch"](function (err) {
         alert(err);
       });
+    },
+    resetGame: function resetGame() {
+      this.gameData = game.clearGameData();
     }
   },
   created: function created() {
-    this.newGame();
+    this.resetGame();
   }
 });
 

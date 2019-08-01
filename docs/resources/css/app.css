@@ -257,6 +257,7 @@ h1,
   border-radius: 4rem;
   border: none;
   cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 .button,

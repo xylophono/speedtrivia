@@ -33,9 +33,13 @@ const app = new Vue({
             .catch((err) => {
                 alert(err);
             });
+        },
+
+        resetGame: function(){
+            this.gameData = game.clearGameData();
         }
     },
     created: function() {
-        this.newGame();
+        this.resetGame();
     }
 });
