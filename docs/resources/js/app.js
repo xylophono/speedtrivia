@@ -1874,19 +1874,44 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {},
   data: function data() {
-    return {};
+    return {
+      started: false
+    };
   },
   methods: {
     startTheGame: function startTheGame() {
       var _this = this;
 
       this.$root.newGame();
+      this.started = true;
       window.setTimeout(function () {
         _this.$root.gameData.gameState.active = true;
-      }, 1000);
+      }, 500);
+      window.setTimeout(function () {
+        _this.started = false;
+      }, 2500);
     }
   }
 });
@@ -1952,6 +1977,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
 //
 //
 //
@@ -2848,24 +2877,36 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "home" }, [
-    _vm._m(0),
-    _vm._v(" "),
-    _c("br"),
-    _vm._v(" "),
-    _c("p", [_vm._v("8 Questions. 8 Seconds each. Ready?")]),
-    _vm._v(" "),
-    _c("br"),
+    _c("div", [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "button",
+          on: {
+            click: function($event) {
+              return _vm.startTheGame()
+            }
+          }
+        },
+        [_vm._v("\n            Start The Game!\n        ")]
+      )
+    ]),
     _vm._v(" "),
     _c(
-      "button",
+      "div",
       {
-        on: {
-          click: function($event) {
-            return _vm.startTheGame()
-          }
+        staticClass: "question-card question-card--no-delay gradient--green",
+        class: {
+          "question-card--active": _vm.started
         }
       },
-      [_vm._v("\n        Start The Game!\n    ")]
+      [_vm._m(1)]
     )
   ])
 }
@@ -2874,7 +2915,25 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("h1", [_vm._v("SPEED"), _c("br"), _vm._v("TRIVIA")])
+    return _c("h1", [
+      _vm._v("SPEED"),
+      _c("br"),
+      _c("span", { staticClass: "text--pink" }, [_vm._v("TRIVIA")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "question-card__content text--white" }, [
+      _c("h1", { staticStyle: { "font-size": "6rem" } }, [
+        _vm._v("\n                HERE"),
+        _c("br"),
+        _vm._v("\n                WE"),
+        _c("br"),
+        _vm._v("\n                GO\n            ")
+      ])
+    ])
   }
 ]
 render._withStripped = true
@@ -3017,6 +3076,19 @@ var render = function() {
           })
         ],
         2
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "question-card__quit",
+          on: {
+            click: function($event) {
+              return _vm.$root.newGame()
+            }
+          }
+        },
+        [_vm._v("\n        x\n    ")]
       )
     ]
   )

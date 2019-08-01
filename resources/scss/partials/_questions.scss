@@ -17,6 +17,19 @@
 
     background-color: $white;
 
+    .question-card__quit {
+        position: absolute;
+        z-index: 2;
+        top: 1rem;
+        right: 1rem;
+        padding: 0.75rem 1rem;
+        background-color: darken($white, 10%);
+        border-radius: 50%;
+        line-height: 1;
+        cursor: pointer;
+
+    }
+
     .question-card__content {
         display: block;
         width: 100%;
@@ -26,34 +39,35 @@
     }
 
     .question-card__button {
-        @extend .p;
-        display: block;
-        width: 100%;
-        text-align: center;
-        background-color: transparent;
-        border: 1px solid $text;
-        border-radius: 0.25rem;
-        padding: 0.25rem;
-
+        @extend .button;
+        background-color: rgba($white, 0.3);
+        background-image: linear-gradient(135deg, rgba($black, 0.05), rgba($black, 0.075));
+        color: $text;
         transition: all 250ms ease;
     }
 
     .question-card__button--true {
         color: $white;
         background-color: $green;
+        background-image: linear-gradient(135deg, $green, lighten($green, 5%));
     }
 
     .question-card__button--false {
         color: $white;
         background-color: $red;
+        background-image: linear-gradient(135deg, $red, lighten($red, 5%));
     }
 
     &.question-card--active {
         animation-name: activeCard;
         animation-duration: 250ms;
-        animation-delay: 1500ms;
+        animation-delay: 750ms;
         animation-timing-function: ease;
         animation-fill-mode: forwards;
+    }
+
+    &.question-card--no-delay {
+        animation-delay: 0ms!important;
     }
 
     @keyframes activeCard {

@@ -23,6 +23,10 @@
                 <br>
             </div>
         </div>
+        <div class="question-card__quit"
+            @click="$root.newGame()">
+            x
+        </div>
     </div>
     
 </template>
