@@ -25,7 +25,7 @@
         </div>
         <div class="question-card__quit"
             @click="$root.newGame()">
-            x
+            <i class="fas fa-times-circle"></i>
         </div>
     </div>
     

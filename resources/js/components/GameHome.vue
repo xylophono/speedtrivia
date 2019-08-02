@@ -1,15 +1,33 @@
 <template>
     <div class="home">
         <div>
-            <h1>SPEED<br><span class="text--pink">TRIVIA</span></h1>
-            <br>
-            <br>
-            <button
-                class="button"
+            <header class="home-header">
+                <div class="home-header__content">
+                    <i class="fas fa-info-circle home-header__about"></i>
+                    <h1><span class="text--smaller">SPEED</span></h1>
+                    <h1>TRIVIA</h1>
+                </div>
+            </header>
+            <main class="home-content">
+                <h2 class="h3">Category</h2>
+                <ul class="categories">
+                    <li v-for="(c, i) in $root.categories"
+                    :key="i"
+                    @click="$root.category = i"
+                    :class="{
+                        'active': $root.category == i
+                    }">
+                        {{ c.name }}
+                    </li>
+                </ul>
+                <br>
+                <button
+                class="button arrow-right"
                 @click="startTheGame()"
             >
                 Start The Game!
             </button>
+            </main>
         </div>
 
         <div
@@ -44,14 +62,15 @@ export default {
 
     methods: {
         startTheGame: function() {
-            this.$root.newGame();
-            this.started = true;
-            window.setTimeout(() => {
-                this.$root.gameData.gameState.active = true;
-            }, 500)
-            window.setTimeout(() => {
-                this.started = false;
-            }, 1500)
+            this.$root.newGame(this.$root.categories[this.$root.category].endpoint).then(() => {
+                this.started = true;
+                window.setTimeout(() => {
+                    this.$root.gameData.gameState.active = true;
+                }, 500)
+                window.setTimeout(() => {
+                    this.started = false;
+                }, 1500)
+            });
         }
     }
 }

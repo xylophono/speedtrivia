@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="game-panel">
     <div
         v-for="(q, i) in $root.gameData.questions"
         :key="i"

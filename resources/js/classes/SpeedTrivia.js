@@ -7,18 +7,44 @@ export default class {
     constructor() {
         this.endpoint = 'https://opentdb.com/api.php';
         this.questions = 8;
-        this.categories = [{
-            name: 'General Knowledge',
-            endpoint: 9
-        }];
+        this.categories = [
+            {
+                name: 'General Knowledge',
+                endpoint: 9
+            },
+            {
+                name: 'Science & Nature',
+                endpoint: 17
+            },
+            {
+                name: 'Geography',
+                endpoint: 22
+            },
+            {
+                name: 'History',
+                endpoint: 23
+            },
+            {
+                name: 'Sports',
+                endpoint: 21
+            },
+            {
+                name: 'Celebrities',
+                endpoint: 26
+            },
+            {
+                name: 'Animals',
+                endpoint: 27
+            }
+        ];
     }
 
     // Create a new game
-    getQuestions() {
+    getQuestions(cat) {
         return axios.get(this.endpoint, {
             params: {
                 amount: this.questions,
-                category: 9
+                category: cat
             }
         })
         .then((response)=>{
@@ -82,5 +108,9 @@ export default class {
                 correct: 0
             }
         }
+    }
+
+    getCategories() {
+        return this.categories;
     }
 }

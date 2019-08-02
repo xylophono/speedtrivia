@@ -14,14 +14,16 @@ const app = new Vue({
     },
     data: {
         gameData: {
-        }
+        },
+        categories: [],
+        category: 0,
     },
     computed: {},
     methods: {
-        newGame: function() {
+        newGame: function(cat) {
             this.gameData = game.clearGameData();
 
-            game.getQuestions()
+            return game.getQuestions(cat)
             .then((resp) => {
                 if(!resp) {
                     alert('failed to get questions');
@@ -40,6 +42,7 @@ const app = new Vue({
         }
     },
     created: function() {
-        this.resetGame();
+        this.categories = game.getCategories();
+        this.gameData = game.clearGameData();
     }
 });
