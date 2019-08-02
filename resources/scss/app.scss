@@ -1,1 +1,11 @@
+@import 'partials/_reset';
+
 * { box-sizing: border-box; }
+
+@import 'partials/_vars';
+@import 'partials/_base';
+@import 'partials/_home';
+@import 'partials/_typography';
+@import 'partials/_buttons';
+
+@import 'partials/_questions';
