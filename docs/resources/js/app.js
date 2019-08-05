@@ -2064,6 +2064,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//TODO: Replace the vue-bound animation with the webanimate api
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3226,13 +3227,7 @@ var render = function() {
     },
     [
       _c("div", {
-        staticStyle: {
-          position: "absolute",
-          left: "0",
-          top: "0",
-          height: "10px",
-          "background-color": "orange"
-        },
+        staticClass: "question-progress",
         style: {
           width: _vm.questionTimeBar
         }

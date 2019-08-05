@@ -4,8 +4,8 @@
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: $pink;
-    background-image: linear-gradient(135deg, $pink, darken($pink, 5%));
+    background-color: $blue;
+    background-image: linear-gradient(135deg, $blue, darken($blue, 5%));
 }
 
 .question-card {
@@ -26,6 +26,14 @@
     padding: 0;
 
     background-color: $white;
+
+    .question-progress {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 10px;
+        background-color: $pink;
+    }
 
     .question-card__quit {
         position: absolute;
@@ -97,6 +105,10 @@
         animation-timing-function: ease;
         animation-fill-mode: forwards;
         border-radius: 0.25rem;
+
+        .question-progress {
+            border-radius: 0.25rem 0 0 0
+        }
     }
 
     @keyframes answeredCard {

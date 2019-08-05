@@ -352,8 +352,8 @@ h1,
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: #E91E63;
-  background-image: linear-gradient(135deg, #E91E63, #d81558);
+  background-color: #2196F3;
+  background-image: linear-gradient(135deg, #2196F3, #0d8aee);
 }
 
 .question-card {
@@ -374,6 +374,14 @@ h1,
   margin: 0;
   padding: 0;
   background-color: #FFF;
+}
+
+.question-card .question-progress {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 10px;
+  background-color: #E91E63;
 }
 
 .question-card .question-card__quit {
@@ -468,6 +476,10 @@ h1,
   -webkit-animation-fill-mode: forwards;
           animation-fill-mode: forwards;
   border-radius: 0.25rem;
+}
+
+.question-card.question-card--answered .question-progress {
+  border-radius: 0.25rem 0 0 0;
 }
 
 @-webkit-keyframes answeredCard {

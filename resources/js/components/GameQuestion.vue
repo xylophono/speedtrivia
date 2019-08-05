@@ -6,7 +6,7 @@
         'question-card--answered': isAnswered
         }">
 
-        <div style="position: absolute; left: 0; top: 0; height: 10px; background-color: orange;"
+        <div class="question-progress"
             :style="{
                 width: questionTimeBar
             }"
@@ -39,6 +39,8 @@
 </template>
 
 <script>
+    //TODO: Replace the vue-bound animation with the webanimate api
+    
     export default {
         data: function() {
             return {
