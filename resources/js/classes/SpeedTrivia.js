@@ -37,6 +37,20 @@ export default class {
                 endpoint: 27
             }
         ];
+        this.speeds = [
+            {
+                name: 'Fast',
+                duration: 8000
+            },
+            {
+                name: 'Faster',
+                duration: 6000
+            },
+            {
+                name: 'Fastest',
+                duration: 4000
+            }
+        ];
     }
 
     // Create a new game
@@ -104,7 +118,7 @@ export default class {
             'gameState': {
                 active: false,
                 completed: false,
-                activeQuestion: 0,
+                activeQuestion: -1, // We start on -1 because the questions are ID'd 0-7, incriment to 0 to begin the associated animations & timers
                 correct: 0
             }
         }
@@ -112,5 +126,9 @@ export default class {
 
     getCategories() {
         return this.categories;
+    }
+
+    getSpeeds() {
+        return this.speeds;
     }
 }
