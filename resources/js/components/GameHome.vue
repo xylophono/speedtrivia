@@ -61,15 +61,19 @@ export default {
     },
 
     methods: {
+        // Starts the game. Timings are largely based on associated CSS animations
         startTheGame: function() {
             this.$root.newGame(this.$root.categories[this.$root.category].endpoint).then(() => {
-                this.started = true;
-                window.setTimeout(() => {
-                    this.$root.gameData.gameState.active = true;
-                }, 500)
-                window.setTimeout(() => {
-                    this.started = false;
-                }, 1500)
+                this.started = true; // tracking local to this component for splash screen
+                setTimeout(() => {
+                    this.$root.gameData.gameState.active = true; // This actually starts the game
+                }, 500);
+                setTimeout(() => {
+                    this.$root.gameData.gameState.activeQuestion++; // We have to incriment this just after else the first timer doesn't trigger
+                }, 501);
+                setTimeout(() => {
+                    this.started = false; // This just kills off the splash screen once the first question is visible
+                }, 1500);
             });
         }
     }

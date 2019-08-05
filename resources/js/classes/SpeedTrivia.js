@@ -104,7 +104,7 @@ export default class {
             'gameState': {
                 active: false,
                 completed: false,
-                activeQuestion: 0,
+                activeQuestion: -1, // We start on -1 because the questions are ID'd 0-7, incriment to 0 to begin the associated animations & timers
                 correct: 0
             }
         }
