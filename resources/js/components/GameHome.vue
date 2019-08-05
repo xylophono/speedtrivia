@@ -21,9 +21,22 @@
                     </li>
                 </ul>
                 <br>
+                <h2 class="h3">Speed</h2>
+                <ul class="categories">
+                    <li v-for="(s, i) in $root.speeds"
+                    :key="i"
+                    @click="$root.questionSpeed = s.duration"
+                    :class="{
+                        'active': $root.questionSpeed == s.duration
+                    }">
+                        {{ s.name }}
+                    </li>
+                </ul>
+                <br>
                 <button
                 class="button arrow-right"
                 @click="startTheGame()"
+                :disabled="started"
             >
                 Start The Game!
             </button>

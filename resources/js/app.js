@@ -16,9 +16,10 @@ const app = new Vue({
         gameData: {
         },
         categories: [],
+        speeds: [],
         //We're not getting the following vars from the SpeedTrivia class because we need them to persist through resets
-        category: 0, // We're defaulting to category 0 (General Knowledge)
-        questionSpeed: 8000, // Default question duration - 8seconds
+        category: 0,// We're defaulting to category 0 (General Knowledge)
+        questionSpeed: 0, // Default question duration - 8seconds
     },
     computed: {},
     methods: {
@@ -48,6 +49,8 @@ const app = new Vue({
     created: function() {
         //Need categories to populate home page, a blank set of game data to track state.
         this.categories = game.getCategories();
+        this.speeds = game.getSpeeds();
+        this.questionSpeed = this.speeds[0].duration;
         this.gameData = game.clearGameData();
     }
 });

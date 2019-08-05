@@ -37,6 +37,20 @@ export default class {
                 endpoint: 27
             }
         ];
+        this.speeds = [
+            {
+                name: 'Fast',
+                duration: 8000
+            },
+            {
+                name: 'Faster',
+                duration: 6000
+            },
+            {
+                name: 'Fastest',
+                duration: 4000
+            }
+        ];
     }
 
     // Create a new game
@@ -112,5 +126,9 @@ export default class {
 
     getCategories() {
         return this.categories;
+    }
+
+    getSpeeds() {
+        return this.speeds;
     }
 }

@@ -1911,6 +1911,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {},
   data: function data() {
@@ -3002,10 +3015,44 @@ var render = function() {
         _vm._v(" "),
         _c("br"),
         _vm._v(" "),
+        _c("h2", { staticClass: "h3" }, [_vm._v("Speed")]),
+        _vm._v(" "),
+        _c(
+          "ul",
+          { staticClass: "categories" },
+          _vm._l(_vm.$root.speeds, function(s, i) {
+            return _c(
+              "li",
+              {
+                key: i,
+                class: {
+                  active: _vm.$root.questionSpeed == s.duration
+                },
+                on: {
+                  click: function($event) {
+                    _vm.$root.questionSpeed = s.duration
+                  }
+                }
+              },
+              [
+                _vm._v(
+                  "\n                    " +
+                    _vm._s(s.name) +
+                    "\n                "
+                )
+              ]
+            )
+          }),
+          0
+        ),
+        _vm._v(" "),
+        _c("br"),
+        _vm._v(" "),
         _c(
           "button",
           {
             staticClass: "button arrow-right",
+            attrs: { disabled: _vm.started },
             on: {
               click: function($event) {
                 return _vm.startTheGame()
@@ -15418,10 +15465,11 @@ var app = new Vue({
   data: {
     gameData: {},
     categories: [],
+    speeds: [],
     //We're not getting the following vars from the SpeedTrivia class because we need them to persist through resets
     category: 0,
     // We're defaulting to category 0 (General Knowledge)
-    questionSpeed: 8000 // Default question duration - 8seconds
+    questionSpeed: 0 // Default question duration - 8seconds
 
   },
   computed: {},
@@ -15449,6 +15497,8 @@ var app = new Vue({
   created: function created() {
     //Need categories to populate home page, a blank set of game data to track state.
     this.categories = game.getCategories();
+    this.speeds = game.getSpeeds();
+    this.questionSpeed = this.speeds[0].duration;
     this.gameData = game.clearGameData();
   }
 });
@@ -15505,6 +15555,16 @@ function () {
     }, {
       name: 'Animals',
       endpoint: 27
+    }];
+    this.speeds = [{
+      name: 'Fast',
+      duration: 8000
+    }, {
+      name: 'Faster',
+      duration: 6000
+    }, {
+      name: 'Fastest',
+      duration: 4000
     }];
   } // Create a new game
 
@@ -15579,6 +15639,11 @@ function () {
     key: "getCategories",
     value: function getCategories() {
       return this.categories;
+    }
+  }, {
+    key: "getSpeeds",
+    value: function getSpeeds() {
+      return this.speeds;
     }
   }]);
 
