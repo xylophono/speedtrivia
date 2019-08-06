@@ -68,4 +68,46 @@
             }
         }
     }
+
+    .splash-content {
+        display: inline-block;
+        width: auto;
+        margin: 0 auto;
+        text-align: left;
+        color: $white;
+
+        [class^="splash-content__"] {
+            @extend .h1;
+            font-size: 4rem!important;
+            opacity: 0;
+        }
+
+        &.splash-content--animate > [class^="splash-content__"] {
+            animation-name: splashText;
+            animation-duration: 500ms;
+            animation-timing-function: ease;
+            animation-fill-mode: forwards;
+        }
+
+        .splash-content__0 {
+            animation-delay: 250ms;
+        }
+
+        .splash-content__1 {
+            animation-delay: 700ms;
+        }
+
+        .splash-content__2 {
+            animation-delay: 1150ms;
+        }
+
+        @keyframes splashText {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    }
 }
