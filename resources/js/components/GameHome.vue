@@ -35,6 +35,8 @@
                         {{ s.name }}
                     </li>
                 </ul>
+
+                <br>
                 
                 <button
                 class="button arrow-right"
@@ -93,7 +95,6 @@ export default {
                 'Lets do this',
                 'Flex your thumbs',
                 'Take a breath',
-                'Three two one',
                 'Clear your mind',
                 "Trust your gut",
                 "You got this",

@@ -71,6 +71,7 @@
         background-image: linear-gradient(135deg, rgba($black, 0.05), rgba($black, 0.075));
         color: $text;
         transition: all 250ms ease;
+        box-shadow: none;
     }
 
     .question-card__button--true {

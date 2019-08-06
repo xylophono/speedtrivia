@@ -1942,12 +1942,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {},
   data: function data() {
     return {
       started: false,
-      splashTextArray: ['Here we go', 'Lets do this', 'Flex your thumbs', 'Take a breath', 'Three two one', 'Clear your mind', "Trust your gut", "You got this", "Ready set go"],
+      splashTextArray: ['Here we go', 'Lets do this', 'Flex your thumbs', 'Take a breath', 'Clear your mind', "Trust your gut", "You got this", "Ready set go"],
       splashTextKey: 0
     };
   },
@@ -2025,13 +2027,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     GameQuestion: _components_GameQuestion_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   data: function data() {
-    return {};
+    return {
+      resultText: ['Yikes!', 'What happened?', 'Keep practicing!', 'Could be worse...', 'Room for improvement...', 'Not too shabby!', 'Good job!', 'Way to go!', 'You crushed it!']
+    };
   },
   methods: {
     goHome: function goHome() {
@@ -3080,6 +3091,8 @@ var render = function() {
           0
         ),
         _vm._v(" "),
+        _c("br"),
+        _vm._v(" "),
         _c(
           "button",
           {
@@ -3216,7 +3229,9 @@ var render = function() {
         },
         [
           _c("div", { staticClass: "question-card__content" }, [
-            _c("p", [
+            _vm._m(0),
+            _vm._v(" "),
+            _c("p", { staticClass: "h1" }, [
               _vm._v(
                 _vm._s(this.$root.gameData.gameState.correct) +
                   " / " +
@@ -3226,8 +3241,15 @@ var render = function() {
             _vm._v(" "),
             _c("br"),
             _vm._v(" "),
-            _c("h2", [_vm._v("Good Job Cowboy")]),
+            _c("h2", [
+              _vm._v(
+                _vm._s(_vm.resultText[this.$root.gameData.gameState.correct])
+              )
+            ]),
             _vm._v(" "),
+            _c("br"),
+            _c("br"),
+            _c("br"),
             _c("br"),
             _vm._v(" "),
             _c(
@@ -3249,7 +3271,22 @@ var render = function() {
     2
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "question-card__logo" }, [
+      _c("div", [
+        _c("p", { staticClass: "h2 text--smaller text--pink" }, [
+          _vm._v("Speed")
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "h2 text--pink" }, [_vm._v("Trivia")])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
