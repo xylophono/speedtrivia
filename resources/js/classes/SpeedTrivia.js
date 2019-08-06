@@ -40,15 +40,15 @@ export default class {
         this.speeds = [
             {
                 name: 'Fast',
-                duration: 8000
+                duration: 7000
             },
             {
                 name: 'Faster',
-                duration: 6000
+                duration: 5000
             },
             {
                 name: 'Fastest',
-                duration: 4000
+                duration: 3000
             }
         ];
     }

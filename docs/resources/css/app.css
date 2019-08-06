@@ -142,19 +142,19 @@ table {
 }
 
 .text--white {
-  color: #FFF;
+  color: #FFF !important;
 }
 
 .text--green {
-  color: #4CAF50;
+  color: #4CAF50 !important;
 }
 
 .text--red {
-  color: #F44336;
+  color: #F44336 !important;
 }
 
 .text--pink {
-  color: #E91E63;
+  color: #E91E63 !important;
 }
 
 .gradient--green {
@@ -166,6 +166,9 @@ html,
 body {
   width: 100%;
   height: 100vh;
+  height: -webkit-fill-available;
+  height: -moz-available;
+  height: -fill-available;
   margin: 0;
   padding: 0;
   background-color: #FFF;
@@ -174,6 +177,9 @@ body {
 body {
   width: 100%;
   height: 100vh;
+  height: -webkit-fill-available;
+  height: -moz-available;
+  height: -fill-available;
   margin: 0;
   background-color: transparent;
   overflow: hidden;
@@ -222,7 +228,7 @@ body {
   width: 100%;
   list-style: none;
   display: block;
-  margin: 0;
+  margin: 0 0 1rem;
   padding: 0.5rem 0 0;
 }
 
@@ -233,8 +239,9 @@ body {
   margin-right: 0.5rem;
   margin-bottom: 0.5rem;
   padding: 0.5rem 1rem;
-  background-color: #333;
-  color: #FFF;
+  background-color: rgba(255, 255, 255, 0.3);
+  background-image: linear-gradient(135deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.075));
+  color: #333;
   font-size: 1rem;
   border-radius: 0.5rem;
   cursor: pointer;
@@ -244,6 +251,67 @@ body {
 .home .categories li.active {
   background-color: #4CAF50;
   background-image: linear-gradient(135deg, #4CAF50, #449d48);
+  color: #FFF;
+  background-image: linear-gradient(135deg, #4CAF50, #449d48);
+}
+
+.home .splash-content {
+  display: inline-block;
+  width: auto;
+  margin: 0 auto;
+  text-align: center;
+  color: #FFF;
+}
+
+.home .splash-content [class^=splash-content__] {
+  font-size: 4rem !important;
+  opacity: 0;
+}
+
+.home .splash-content.splash-content--animate > [class^=splash-content__] {
+  -webkit-animation-name: splashText;
+          animation-name: splashText;
+  -webkit-animation-duration: 500ms;
+          animation-duration: 500ms;
+  -webkit-animation-timing-function: ease;
+          animation-timing-function: ease;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+.home .splash-content .splash-content__0 {
+  -webkit-animation-delay: 250ms;
+          animation-delay: 250ms;
+}
+
+.home .splash-content .splash-content__1 {
+  -webkit-animation-delay: 700ms;
+          animation-delay: 700ms;
+}
+
+.home .splash-content .splash-content__2 {
+  -webkit-animation-delay: 1150ms;
+          animation-delay: 1150ms;
+}
+
+@-webkit-keyframes splashText {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes splashText {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 html,
@@ -276,6 +344,7 @@ span,
 
 h1,
 .h1,
+.home .splash-content [class^=splash-content__],
 h2,
 .h2,
 h3,
@@ -298,8 +367,19 @@ h6,
 }
 
 h1,
-.h1 {
+.h1,
+.home .splash-content [class^=splash-content__] {
   font-size: 3rem;
+}
+
+h2,
+.h2 {
+  font-size: 2rem;
+}
+
+h3,
+.h3 {
+  font-size: 1.5rem;
 }
 
 .text--larger {
@@ -320,7 +400,7 @@ h1,
   color: #FFF;
   background-color: #E91E63;
   background-image: linear-gradient(135deg, #E91E63, #eb3573);
-  padding: 0.5rem;
+  padding: 0.75rem 1rem;
   border-radius: 4rem;
   border: none;
   cursor: pointer;
@@ -343,7 +423,7 @@ h1,
   content: "\F061";
   position: absolute;
   right: 1rem;
-  top: 0.5rem;
+  top: 0.75rem;
 }
 
 .game-panel {
@@ -366,14 +446,25 @@ h1,
   display: -webkit-box;
   display: flex;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   -webkit-box-pack: center;
           justify-content: center;
-  -webkit-box-align: center;
-          align-items: center;
+  -webkit-box-align: start;
+          align-items: flex-start;
   margin: 0;
   padding: 0;
   background-color: #FFF;
+}
+
+.question-card .question-card__logo {
+  margin-bottom: 4rem;
+}
+
+.question-card .question-card__logo div {
+  display: inline-block;
+  width: auto;
+  margin: 0 auto;
+  text-align: left;
 }
 
 .question-card .question-progress {

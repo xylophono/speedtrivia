@@ -1,6 +1,7 @@
 <template>
     <div class="home">
         <div>
+            
             <header class="home-header">
                 <div class="home-header__content">
                     <i class="fas fa-info-circle home-header__about"></i>
@@ -8,7 +9,9 @@
                     <h1>TRIVIA</h1>
                 </div>
             </header>
+
             <main class="home-content">
+                
                 <h2 class="h3">Category</h2>
                 <ul class="categories">
                     <li v-for="(c, i) in $root.categories"
@@ -20,7 +23,7 @@
                         {{ c.name }}
                     </li>
                 </ul>
-                <br>
+
                 <h2 class="h3">Speed</h2>
                 <ul class="categories">
                     <li v-for="(s, i) in $root.speeds"
@@ -32,7 +35,7 @@
                         {{ s.name }}
                     </li>
                 </ul>
-                <br>
+                
                 <button
                 class="button arrow-right"
                 @click="startTheGame()"
@@ -40,6 +43,7 @@
             >
                 Start The Game!
             </button>
+
             </main>
         </div>
 
@@ -49,12 +53,26 @@
                 'question-card--active': started
             }">
 
-            <div class="question-card__content text--white">
-                <h1 style="font-size: 6rem;">
-                    HERE<br>
-                    WE<br>
-                    GO
-                </h1>
+            <div class="question-card__content">
+
+                <div class="question-card__logo">
+                    <div>
+                        <p class="h2 text--smaller text--white">Speed</p>
+                        <p class="h2 text--white">Trivia</p>
+                    </div>
+                </div>
+
+                <div class="splash-content"
+                    :class="{
+                        'splash-content--animate': started
+                    }">
+                    <p v-for="(text, i) in splashText"
+                        :key="i"
+                        :class="'splash-content__' + i">
+                        {{ text}}
+                        </p>
+                    
+                </div>
             </div>
 
         </div>
@@ -69,7 +87,25 @@ export default {
 
     data: function() {
         return {
-            started: false
+            started: false,
+            splashTextArray: [
+                'Here we go',
+                'Lets do this',
+                'Flex your thumbs',
+                'Take a breath',
+                'Three two one',
+                'Clear your mind',
+                "Trust your gut",
+                "You got this",
+                "Ready set go"
+            ],
+            splashTextKey: 0
+        }
+    },
+
+    computed: {
+        splashText: function() {
+            return this.splashTextArray[this.splashTextKey].split(' ');
         }
     },
 
@@ -77,16 +113,17 @@ export default {
         // Starts the game. Timings are largely based on associated CSS animations
         startTheGame: function() {
             this.$root.newGame(this.$root.categories[this.$root.category].endpoint).then(() => {
+                this.splashTextKey = Math.floor(Math.random() * this.splashTextArray.length); // Grab random text for splash screen
                 this.started = true; // tracking local to this component for splash screen
                 setTimeout(() => {
                     this.$root.gameData.gameState.active = true; // This actually starts the game
-                }, 500);
+                }, 1250);
                 setTimeout(() => {
                     this.$root.gameData.gameState.activeQuestion++; // We have to incriment this just after else the first timer doesn't trigger
-                }, 501);
+                }, 1251);
                 setTimeout(() => {
                     this.started = false; // This just kills off the splash screen once the first question is visible
-                }, 1500);
+                }, 2251);
             });
         }
     }

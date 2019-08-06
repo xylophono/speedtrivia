@@ -1924,12 +1924,37 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {},
   data: function data() {
     return {
-      started: false
+      started: false,
+      splashTextArray: ['Here we go', 'Lets do this', 'Flex your thumbs', 'Take a breath', 'Three two one', 'Clear your mind', "Trust your gut", "You got this", "Ready set go"],
+      splashTextKey: 0
     };
+  },
+  computed: {
+    splashText: function splashText() {
+      return this.splashTextArray[this.splashTextKey].split(' ');
+    }
   },
   methods: {
     // Starts the game. Timings are largely based on associated CSS animations
@@ -1937,17 +1962,19 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.$root.newGame(this.$root.categories[this.$root.category].endpoint).then(function () {
+        _this.splashTextKey = Math.floor(Math.random() * _this.splashTextArray.length); // Grab random text for splash screen
+
         _this.started = true; // tracking local to this component for splash screen
 
         setTimeout(function () {
           _this.$root.gameData.gameState.active = true; // This actually starts the game
-        }, 500);
+        }, 1250);
         setTimeout(function () {
           _this.$root.gameData.gameState.activeQuestion++; // We have to incriment this just after else the first timer doesn't trigger
-        }, 501);
+        }, 1251);
         setTimeout(function () {
           _this.started = false; // This just kills off the splash screen once the first question is visible
-        }, 1500);
+        }, 2251);
       });
     }
   }
@@ -2024,6 +2051,14 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3014,8 +3049,6 @@ var render = function() {
           0
         ),
         _vm._v(" "),
-        _c("br"),
-        _vm._v(" "),
         _c("h2", { staticClass: "h3" }, [_vm._v("Speed")]),
         _vm._v(" "),
         _c(
@@ -3047,8 +3080,6 @@ var render = function() {
           0
         ),
         _vm._v(" "),
-        _c("br"),
-        _vm._v(" "),
         _c(
           "button",
           {
@@ -3073,7 +3104,31 @@ var render = function() {
           "question-card--active": _vm.started
         }
       },
-      [_vm._m(1)]
+      [
+        _c("div", { staticClass: "question-card__content" }, [
+          _vm._m(1),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "splash-content",
+              class: {
+                "splash-content--animate": _vm.started
+              }
+            },
+            _vm._l(_vm.splashText, function(text, i) {
+              return _c("p", { key: i, class: "splash-content__" + i }, [
+                _vm._v(
+                  "\n                    " +
+                    _vm._s(text) +
+                    "\n                    "
+                )
+              ])
+            }),
+            0
+          )
+        ])
+      ]
     )
   ])
 }
@@ -3098,13 +3153,13 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "question-card__content text--white" }, [
-      _c("h1", { staticStyle: { "font-size": "6rem" } }, [
-        _vm._v("\n                HERE"),
-        _c("br"),
-        _vm._v("\n                WE"),
-        _c("br"),
-        _vm._v("\n                GO\n            ")
+    return _c("div", { staticClass: "question-card__logo" }, [
+      _c("div", [
+        _c("p", { staticClass: "h2 text--smaller text--white" }, [
+          _vm._v("Speed")
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "h2 text--white" }, [_vm._v("Trivia")])
       ])
     ])
   }
@@ -3237,8 +3292,11 @@ var render = function() {
         "div",
         { staticClass: "question-card__content" },
         [
+          _vm._m(0),
+          _vm._v(" "),
           _c("p", [_vm._v(_vm._s(_vm.question))]),
           _vm._v(" "),
+          _c("br"),
           _c("br"),
           _vm._v(" "),
           _vm._l(_vm.answers, function(answer, index) {
@@ -3291,7 +3349,22 @@ var render = function() {
     ]
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "question-card__logo" }, [
+      _c("div", [
+        _c("p", { staticClass: "h2 text--smaller text--pink" }, [
+          _vm._v("Speed")
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "h2 text--pink" }, [_vm._v("Trivia")])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -15553,13 +15626,13 @@ function () {
     }];
     this.speeds = [{
       name: 'Fast',
-      duration: 8000
+      duration: 7000
     }, {
       name: 'Faster',
-      duration: 6000
+      duration: 5000
     }, {
       name: 'Fastest',
-      duration: 4000
+      duration: 3000
     }];
   } // Create a new game
 
