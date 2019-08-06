@@ -54,6 +54,14 @@
             }">
 
             <div class="question-card__content">
+
+                <div class="question-card__logo">
+                    <div>
+                        <p class="h2 text--smaller text--white">Speed</p>
+                        <p class="h2 text--white">Trivia</p>
+                    </div>
+                </div>
+
                 <div class="splash-content"
                     :class="{
                         'splash-content--animate': started

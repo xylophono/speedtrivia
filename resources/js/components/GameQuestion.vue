@@ -13,6 +13,14 @@
         ></div>
 
         <div class="question-card__content">
+            
+            <div class="question-card__logo">
+                <div>
+                    <p class="h2 text--smaller text--pink">Speed</p>
+                    <p class="h2 text--pink">Trivia</p>
+                </div>
+            </div>
+            
             <p>{{ question }}</p>
             <br><br>
             <div

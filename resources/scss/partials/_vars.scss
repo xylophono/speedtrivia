@@ -8,10 +8,10 @@ $yellow: #FFC107;
 $blue: #2196F3;
 $box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
 
-.text--white { color: $white; }
-.text--green { color: $green; }
-.text--red { color: $red; }
-.text--pink { color: $pink; }
+.text--white { color: $white!important; }
+.text--green { color: $green!important; }
+.text--red { color: $red!important; }
+.text--pink { color: $pink!important; }
 
 .gradient--green {
     background-color: $green;

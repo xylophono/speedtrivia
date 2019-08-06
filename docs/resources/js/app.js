@@ -1934,6 +1934,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {},
   data: function data() {
@@ -2043,6 +2051,14 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3090,6 +3106,8 @@ var render = function() {
       },
       [
         _c("div", { staticClass: "question-card__content" }, [
+          _vm._m(1),
+          _vm._v(" "),
           _c(
             "div",
             {
@@ -3128,6 +3146,20 @@ var staticRenderFns = [
         ]),
         _vm._v(" "),
         _c("h1", [_vm._v("TRIVIA")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "question-card__logo" }, [
+      _c("div", [
+        _c("p", { staticClass: "h2 text--smaller text--white" }, [
+          _vm._v("Speed")
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "h2 text--white" }, [_vm._v("Trivia")])
       ])
     ])
   }
@@ -3260,6 +3292,8 @@ var render = function() {
         "div",
         { staticClass: "question-card__content" },
         [
+          _vm._m(0),
+          _vm._v(" "),
           _c("p", [_vm._v(_vm._s(_vm.question))]),
           _vm._v(" "),
           _c("br"),
@@ -3315,7 +3349,22 @@ var render = function() {
     ]
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "question-card__logo" }, [
+      _c("div", [
+        _c("p", { staticClass: "h2 text--smaller text--pink" }, [
+          _vm._v("Speed")
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "h2 text--pink" }, [_vm._v("Trivia")])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 

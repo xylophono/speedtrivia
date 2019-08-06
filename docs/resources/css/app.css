@@ -142,19 +142,19 @@ table {
 }
 
 .text--white {
-  color: #FFF;
+  color: #FFF !important;
 }
 
 .text--green {
-  color: #4CAF50;
+  color: #4CAF50 !important;
 }
 
 .text--red {
-  color: #F44336;
+  color: #F44336 !important;
 }
 
 .text--pink {
-  color: #E91E63;
+  color: #E91E63 !important;
 }
 
 .gradient--green {
@@ -166,6 +166,9 @@ html,
 body {
   width: 100%;
   height: 100vh;
+  height: -webkit-fill-available;
+  height: -moz-available;
+  height: -fill-available;
   margin: 0;
   padding: 0;
   background-color: #FFF;
@@ -174,6 +177,9 @@ body {
 body {
   width: 100%;
   height: 100vh;
+  height: -webkit-fill-available;
+  height: -moz-available;
+  height: -fill-available;
   margin: 0;
   background-color: transparent;
   overflow: hidden;
@@ -253,7 +259,7 @@ body {
   display: inline-block;
   width: auto;
   margin: 0 auto;
-  text-align: left;
+  text-align: center;
   color: #FFF;
 }
 
@@ -366,6 +372,16 @@ h1,
   font-size: 3rem;
 }
 
+h2,
+.h2 {
+  font-size: 2rem;
+}
+
+h3,
+.h3 {
+  font-size: 1.5rem;
+}
+
 .text--larger {
   font-size: 1.2em;
 }
@@ -430,14 +446,25 @@ h1,
   display: -webkit-box;
   display: flex;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   -webkit-box-pack: center;
           justify-content: center;
-  -webkit-box-align: center;
-          align-items: center;
+  -webkit-box-align: start;
+          align-items: flex-start;
   margin: 0;
   padding: 0;
   background-color: #FFF;
+}
+
+.question-card .question-card__logo {
+  margin-bottom: 4rem;
+}
+
+.question-card .question-card__logo div {
+  display: inline-block;
+  width: auto;
+  margin: 0 auto;
+  text-align: left;
 }
 
 .question-card .question-progress {
