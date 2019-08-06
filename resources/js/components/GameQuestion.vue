@@ -14,7 +14,7 @@
 
         <div class="question-card__content">
             <p>{{ question }}</p>
-            <br>
+            <br><br>
             <div
                 v-for="(answer, index) in answers"
                 :key="index">

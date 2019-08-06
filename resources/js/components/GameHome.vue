@@ -1,6 +1,7 @@
 <template>
     <div class="home">
         <div>
+            
             <header class="home-header">
                 <div class="home-header__content">
                     <i class="fas fa-info-circle home-header__about"></i>
@@ -8,7 +9,9 @@
                     <h1>TRIVIA</h1>
                 </div>
             </header>
+
             <main class="home-content">
+                
                 <h2 class="h3">Category</h2>
                 <ul class="categories">
                     <li v-for="(c, i) in $root.categories"
@@ -20,7 +23,7 @@
                         {{ c.name }}
                     </li>
                 </ul>
-                <br>
+
                 <h2 class="h3">Speed</h2>
                 <ul class="categories">
                     <li v-for="(s, i) in $root.speeds"
@@ -32,7 +35,7 @@
                         {{ s.name }}
                     </li>
                 </ul>
-                <br>
+                
                 <button
                 class="button arrow-right"
                 @click="startTheGame()"
@@ -40,6 +43,7 @@
             >
                 Start The Game!
             </button>
+            
             </main>
         </div>
 

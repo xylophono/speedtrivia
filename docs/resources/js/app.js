@@ -1924,6 +1924,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {},
   data: function data() {
@@ -3014,8 +3018,6 @@ var render = function() {
           0
         ),
         _vm._v(" "),
-        _c("br"),
-        _vm._v(" "),
         _c("h2", { staticClass: "h3" }, [_vm._v("Speed")]),
         _vm._v(" "),
         _c(
@@ -3046,8 +3048,6 @@ var render = function() {
           }),
           0
         ),
-        _vm._v(" "),
-        _c("br"),
         _vm._v(" "),
         _c(
           "button",
@@ -3239,6 +3239,7 @@ var render = function() {
         [
           _c("p", [_vm._v(_vm._s(_vm.question))]),
           _vm._v(" "),
+          _c("br"),
           _c("br"),
           _vm._v(" "),
           _vm._l(_vm.answers, function(answer, index) {
