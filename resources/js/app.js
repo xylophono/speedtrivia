@@ -1,4 +1,5 @@
 window.Vue = require('vue');
+require('web-animations-js');
 
 import SpeedTrivia from './classes/SpeedTrivia.js';
 let game = new SpeedTrivia;
