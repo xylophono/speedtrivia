@@ -52,9 +52,7 @@
     
 </template>
 
-<script>
-    //TODO: Replace the vue-bound animation with the webanimate api
-    
+<script>    
     export default {
         data: function() {
             return {
@@ -89,6 +87,8 @@
         },
         methods: {
             answerQuestion: function(index) {
+
+                window.navigator.vibrate(50);
                 
                 this.isAnswered = true;
                 this.questionTimerAnimation.pause();
@@ -100,8 +100,11 @@
                     if(this.$root.gameData.questions[this.id].answers[index].correct) {
                         this.$root.gameData.gameState.correct++; //Calculate whether the answer was correct and incriment score if appropriate
                         this.isCorrect = true;
+                        this.$root.playAudio('correct');
                     }
+                    else { this.$root.playAudio('incorrect'); }
                 }
+                else { this.$root.playAudio('incorrect'); }
 
                 //If there's more questions to go incriment the activeQuestion to trigger next one
                 if(this.id < this.$root.gameData.meta.questions -1 ) {

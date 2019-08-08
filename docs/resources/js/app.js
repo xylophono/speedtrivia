@@ -2116,7 +2116,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//TODO: Replace the vue-bound animation with the webanimate api
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2152,6 +2151,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     answerQuestion: function answerQuestion(index) {
+      window.navigator.vibrate(50);
       this.isAnswered = true;
       this.questionTimerAnimation.pause();
       clearInterval(this.questionTimerTimeout); //if an index was provided then the user selected an answer (instead of being timed out)
@@ -2163,7 +2163,12 @@ __webpack_require__.r(__webpack_exports__);
           this.$root.gameData.gameState.correct++; //Calculate whether the answer was correct and incriment score if appropriate
 
           this.isCorrect = true;
+          this.$root.playAudio('correct');
+        } else {
+          this.$root.playAudio('incorrect');
         }
+      } else {
+        this.$root.playAudio('incorrect');
       } //If there's more questions to go incriment the activeQuestion to trigger next one
 
 
@@ -15617,8 +15622,9 @@ var app = new Vue({
     //We're not getting the following vars from the SpeedTrivia class because we need them to persist through resets
     category: 0,
     // We're defaulting to category 0 (General Knowledge)
-    questionSpeed: 0 // Default question duration - 8seconds
-
+    questionSpeed: 0,
+    // Default question duration - 8seconds
+    audio: true
   },
   computed: {},
   methods: {
@@ -15636,6 +15642,13 @@ var app = new Vue({
       })["catch"](function (err) {
         alert(err);
       });
+    },
+    //Handles audio events
+    playAudio: function playAudio(clip) {// if(this.$root.audio && clip) {
+      //     let audio = new Audio('resources/audio/'+clip+'.mp3');
+      //     audio.volume = 0.5;
+      //     audio.play();
+      // }
     },
     //Resets game data which functionally stops the game
     resetGame: function resetGame() {
