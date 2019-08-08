@@ -2110,12 +2110,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //TODO: Replace the vue-bound animation with the webanimate api
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       selected: null,
       isAnswered: false,
+      isCorrect: false,
       questionInterval: '',
       questionTime: 0
     };
@@ -2166,6 +2177,8 @@ __webpack_require__.r(__webpack_exports__);
 
         if (this.$root.gameData.questions[this.id].answers[index].correct) {
           this.$root.gameData.gameState.correct++; //Calculate whether the answer was correct and incriment score if appropriate
+
+          this.isCorrect = true;
         }
       } //If there's more questions to go incriment the activeQuestion to trigger next one
 
@@ -3382,7 +3395,21 @@ var render = function() {
           }
         },
         [_c("i", { staticClass: "fas fa-times-circle" })]
-      )
+      ),
+      _vm._v(" "),
+      _vm.isAnswered
+        ? _c("div", { staticClass: "question-card__result" }, [
+            _c("i", {
+              staticClass: "far",
+              class: {
+                "fa-check-circle": _vm.isCorrect,
+                "text--green": _vm.isCorrect,
+                "fa-times-circle": !_vm.isCorrect,
+                "text--red": !_vm.isCorrect
+              }
+            })
+          ])
+        : _vm._e()
     ]
   )
 }

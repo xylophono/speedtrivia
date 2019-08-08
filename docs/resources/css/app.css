@@ -486,6 +486,13 @@ h3,
   cursor: pointer;
 }
 
+.question-card .question-card__result {
+  position: absolute;
+  bottom: 2rem;
+  left: calc(50% - 2rem);
+  font-size: 4rem;
+}
+
 .question-card .question-card__content {
   display: block;
   width: 100%;

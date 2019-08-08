@@ -42,6 +42,16 @@
             @click="quitGame();">
             <i class="fas fa-times-circle"></i>
         </div>
+        <div class="question-card__result"
+            v-if="isAnswered">
+            <i class="far"
+                :class="{
+                    'fa-check-circle': isCorrect,
+                    'text--green': isCorrect,
+                    'fa-times-circle': !isCorrect,
+                    'text--red': !isCorrect
+                }"></i>
+        </div>
     </div>
     
 </template>
@@ -54,6 +64,7 @@
             return {
                 selected: null,
                 isAnswered: false,
+                isCorrect: false,
                 questionInterval: '',
                 questionTime: 0
             }
@@ -104,6 +115,7 @@
                     this.selected = index; //Log the answer the user picked
                     if(this.$root.gameData.questions[this.id].answers[index].correct) {
                         this.$root.gameData.gameState.correct++; //Calculate whether the answer was correct and incriment score if appropriate
+                        this.isCorrect = true;
                     }
                 }
 
