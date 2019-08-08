@@ -6,11 +6,7 @@
         'question-card--answered': isAnswered
         }">
 
-        <div class="question-progress"
-            :style="{
-                width: questionTimeBar
-            }"
-        ></div>
+        <div class="question-progress" :ref="'questionProgress'+this.id"></div>
 
         <div class="question-card__content">
             
@@ -42,20 +38,29 @@
             @click="quitGame();">
             <i class="fas fa-times-circle"></i>
         </div>
+        <div class="question-card__result"
+            v-if="isAnswered">
+            <i class="far"
+                :class="{
+                    'fa-check-circle': isCorrect,
+                    'text--green': isCorrect,
+                    'fa-times-circle': !isCorrect,
+                    'text--red': !isCorrect
+                }"></i>
+        </div>
     </div>
     
 </template>
 
-<script>
-    //TODO: Replace the vue-bound animation with the webanimate api
-    
+<script>    
     export default {
         data: function() {
             return {
                 selected: null,
                 isAnswered: false,
-                questionInterval: '',
-                questionTime: 0
+                isCorrect: false,
+                questionTimerAnimation: '',
+                questionTimerTimeout: ''
             }
         },
         computed: {
@@ -64,27 +69,14 @@
                 return this.$root.gameData.gameState.activeQuestion >= this.id;
             },
 
-            //Calculates the width of the progressbar
-            questionTimeBar() {
-                let calc = (this.questionTime/this.$root.questionSpeed) * 100;
-                return calc + '%';
-            }
         },
         watch: {
             // Starts the game timer once the question is active.
             isActive: function(activeVal) {
-                if(activeVal === true && this.questionInterval == '') {
+                if(activeVal === true && this.questionTimerAnimation == '') {
                     setTimeout(() => {
-                        this.startTimer();
+                        this.startTimerAnimation();
                     }, 1000); // 1000ms delay to account for CSS animations
-                }
-            },
-
-            // If the timer expires we gotta kill it before we invalidate the question
-            questionTime: function(timeVal) {
-                if(timeVal >= this.$root.questionSpeed) {
-                    clearInterval(this.questionInterval);
-                    this.answerQuestion(null);
                 }
             }
         },
@@ -95,17 +87,24 @@
         },
         methods: {
             answerQuestion: function(index) {
+
+                window.navigator.vibrate(50);
                 
                 this.isAnswered = true;
+                this.questionTimerAnimation.pause();
+                clearInterval(this.questionTimerTimeout);
                 
                 //if an index was provided then the user selected an answer (instead of being timed out)
                 if(index !== null) {
-                    clearInterval(this.questionInterval); //Kill the timer
                     this.selected = index; //Log the answer the user picked
                     if(this.$root.gameData.questions[this.id].answers[index].correct) {
                         this.$root.gameData.gameState.correct++; //Calculate whether the answer was correct and incriment score if appropriate
+                        this.isCorrect = true;
+                        this.$root.playAudio('correct');
                     }
+                    else { this.$root.playAudio('incorrect'); }
                 }
+                else { this.$root.playAudio('incorrect'); }
 
                 //If there's more questions to go incriment the activeQuestion to trigger next one
                 if(this.id < this.$root.gameData.meta.questions -1 ) {
@@ -120,15 +119,21 @@
 
             // Kill the timer and reset the game data to kill the current game
             quitGame: function() {
-                clearInterval(this.questionInterval);
                 this.$root.resetGame();
             },
 
-            // Incriment timer every 50ms until the watcher kills it or question is answered
-            startTimer: function() {
-                this.questionInterval = setInterval(() => {
-                    this.questionTime = this.questionTime +50;
-                }, 50);
+            // Create a webanimation to animate the progress bar, create a timeout to autoanswer the question is the time limit is breached
+            startTimerAnimation: function() {
+                this.questionTimerAnimation = this.$refs['questionProgress'+this.id].animate({
+                    width: [0, '100%']
+                }, {
+                    duration: this.$root.questionSpeed,
+                    iterations: 1
+                });
+
+                this.questionTimerTimeout = setTimeout(() => {
+                    this.answerQuestion(null);
+                }, this.$root.questionSpeed)
             }
         }
     }

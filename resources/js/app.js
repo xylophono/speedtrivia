@@ -1,4 +1,5 @@
 window.Vue = require('vue');
+require('web-animations-js');
 
 import SpeedTrivia from './classes/SpeedTrivia.js';
 let game = new SpeedTrivia;
@@ -20,6 +21,7 @@ const app = new Vue({
         //We're not getting the following vars from the SpeedTrivia class because we need them to persist through resets
         category: 0,// We're defaulting to category 0 (General Knowledge)
         questionSpeed: 0, // Default question duration - 8seconds
+        audio: true,
     },
     computed: {},
     methods: {
@@ -40,6 +42,15 @@ const app = new Vue({
                 alert(err);
             });
         },
+
+        //Handles audio events
+        playAudio: function(clip) {
+            // if(this.$root.audio && clip) {
+            //     let audio = new Audio('resources/audio/'+clip+'.mp3');
+            //     audio.volume = 0.5;
+            //     audio.play();
+            // }
+         },
 
         //Resets game data which functionally stops the game
         resetGame: function(){

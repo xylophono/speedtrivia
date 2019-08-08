@@ -18,10 +18,17 @@
         }">
 
         <div class="question-card__content">
-            <p>{{ this.$root.gameData.gameState.correct}} / {{ this.$root.gameData.meta.questions}}</p>
+            <div class="question-card__logo">
+                <div>
+                    <p class="h2 text--smaller text--pink">Speed</p>
+                    <p class="h2 text--pink">Trivia</p>
+                </div>
+            </div>
+
+            <p class="h1">{{ this.$root.gameData.gameState.correct }} / {{ this.$root.gameData.meta.questions }}</p>
             <br>
-            <h2>Good Job Cowboy</h2>
-            <br>
+            <h2>{{ resultText[this.$root.gameData.gameState.correct] }}</h2>
+            <br><br><br><br>
             <button class="button" @click="goHome()">
                 Home
             </button>
@@ -39,6 +46,17 @@ export default {
     },
     data: function() {
         return {
+            resultText: [
+                'Yikes!',
+                'What happened?',
+                'Keep practicing!',
+                'Could be worse...',
+                'Room for improvement...',
+                'Not too shabby!',
+                'Good job!',
+                'Way to go!',
+                'You crushed it!'
+            ]
         }
     },
     methods: {
