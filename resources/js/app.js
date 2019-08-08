@@ -49,6 +49,7 @@ const app = new Vue({
             //     let audio = new Audio('resources/audio/'+clip+'.mp3');
             //     audio.volume = 0.5;
             //     audio.play();
+            //     window.navigator.vibrate(50);
             // }
          },
 

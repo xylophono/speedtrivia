@@ -87,8 +87,6 @@
         },
         methods: {
             answerQuestion: function(index) {
-
-                window.navigator.vibrate(50);
                 
                 this.isAnswered = true;
                 this.questionTimerAnimation.pause();
