@@ -1,5 +1,6 @@
 html, body {
     width: 100%;
+    max-width: 100vw;
     height: 100vh;
     height: -webkit-fill-available;
     height: -moz-available;
@@ -15,11 +16,6 @@ html, body {
 }
 
 body {
-    width: 100%;
-    height: 100vh;
-    height: -webkit-fill-available;
-    height: -moz-available;
-    height: -fill-available;
     margin: 0;
     background-color: transparent;
 }
