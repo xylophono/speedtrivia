@@ -12,6 +12,7 @@
     </div>
 
     <div
+        v-if="$root.gameData.gameState.completed"
         class="question-card"
         :class="{
             'question-card--active': $root.gameData.gameState.completed
