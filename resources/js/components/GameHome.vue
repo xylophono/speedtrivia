@@ -50,7 +50,6 @@
         </div>
 
         <div
-            v-if="started"
             class="question-card question-card--no-delay gradient--green"
             :class="{
                 'question-card--active': started
