@@ -31,6 +31,12 @@
 
     background-color: $white;
 
+    &.question-card--results {
+        background-color: $pink;
+        background-image: linear-gradient(135deg, $pink, darken($pink, 5%));
+        color: $white;
+    }
+
     .question-card__logo {
         margin-bottom: 4rem;
         
@@ -82,18 +88,33 @@
         color: $text;
         transition: all 250ms ease;
         box-shadow: none;
+
+        &:hover {
+            background-color: rgba($white, 0.3);
+            background-image: linear-gradient(135deg, rgba($black, 0.15), rgba($black, 0.175));
+        }
     }
 
     .question-card__button--true {
         color: $white;
         background-color: $green;
         background-image: linear-gradient(135deg, $green, lighten($green, 5%));
+
+        &:hover {
+            background-color: $green;
+            background-image: linear-gradient(135deg, $green, lighten($green, 5%));
+        }
     }
 
     .question-card__button--false {
         color: $white;
         background-color: $red;
         background-image: linear-gradient(135deg, $red, lighten($red, 5%));
+
+        &:hover {
+            background-color: $red;
+            background-image: linear-gradient(135deg, $red, lighten($red, 5%));
+        }
     }
 
     &.question-card--active {

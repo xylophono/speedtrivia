@@ -39,7 +39,7 @@
                 <br>
                 
                 <button
-                class="button arrow-right"
+                class="button arrow-right text--heading"
                 @click="startTheGame()"
                 :disabled="started"
             >

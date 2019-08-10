@@ -13,7 +13,7 @@
 
     <div
         v-if="$root.gameData.gameState.completed"
-        class="question-card"
+        class="question-card question-card--results"
         :class="{
             'question-card--active': $root.gameData.gameState.completed
         }">
@@ -21,8 +21,8 @@
         <div class="question-card__content">
             <div class="question-card__logo">
                 <div>
-                    <p class="h2 text--smaller text--pink">Speed</p>
-                    <p class="h2 text--pink">Trivia</p>
+                    <p class="h2 text--smaller">Speed</p>
+                    <p class="h2">Trivia</p>
                 </div>
             </div>
 

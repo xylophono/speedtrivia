@@ -6,7 +6,7 @@ const he = require('he');
 export default class {
     constructor() {
         this.endpoint = 'https://opentdb.com/api.php';
-        this.questions = 8;
+        this.questions = 1;
         this.categories = [
             {
                 name: 'General Knowledge',
