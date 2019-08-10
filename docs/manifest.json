@@ -6,7 +6,7 @@
     "display": "standalone",
     "orientation": "portrait",
     "Scope": "/",
-    "start_url": "https://xylophono.github.io/speedtrivia",
+    "start_url": "https://speedtrivia.net",
     "icons": [
       {
         "src": "resources/images/icons/icon-72x72.png",
