@@ -12,8 +12,15 @@
             
             <div class="question-card__logo">
                 <div>
-                    <p class="h2 text--smaller text--pink">Speed</p>
-                    <p class="h2 text--pink">Trivia</p>
+                    <div class="logo logo--pink">
+                        <p><span class="text--smaller">SPEED</span></p>
+                        <p>TRIVIA</p>
+                    </div>
+                    
+                    <div class="question-card__quit"
+                        @click="quitGame();">
+                        <i class="fas fa-times-circle"></i>
+                    </div>
                 </div>
             </div>
             
@@ -33,10 +40,6 @@
                 >{{ answer.answer }}</button>
                 <br>
             </div>
-        </div>
-        <div class="question-card__quit"
-            @click="quitGame();">
-            <i class="fas fa-times-circle"></i>
         </div>
         <div class="question-card__result"
             v-if="isAnswered">
