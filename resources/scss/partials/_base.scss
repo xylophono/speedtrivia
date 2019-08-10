@@ -35,3 +35,34 @@ body {
     right: 0;
     bottom: 0;
 }
+
+.logo {
+    position: relative;
+    z-index: 1;
+    color: $white;
+
+    p {
+        @extend .h1;
+
+        & + p {
+            margin-top: -0.5rem;
+        }
+    }
+
+    &::before {
+        content: '\f04b';
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        font-size: 6rem;
+        color: lighten($yellow, 10%);
+        position: absolute;
+        z-index: -1;
+        left: -0.75rem;
+        top: -1.75rem;
+        transform: rotateZ(-45deg);
+    }
+
+    &.logo--pink {
+        color: $pink;
+    }
+}

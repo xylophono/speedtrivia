@@ -5,8 +5,10 @@
             <header class="home-header">
                 <div class="home-header__content">
                     <i class="fas fa-info-circle home-header__about"></i>
-                    <h1><span class="text--smaller">SPEED</span></h1>
-                    <h1>TRIVIA</h1>
+                    <div class="logo">
+                        <p><span class="text--smaller">SPEED</span></p>
+                        <p>TRIVIA</p>
+                    </div>
                 </div>
             </header>
 
@@ -60,8 +62,10 @@
 
                 <div class="question-card__logo">
                     <div>
-                        <p class="h2 text--smaller text--white">Speed</p>
-                        <p class="h2 text--white">Trivia</p>
+                        <div class="logo">
+                            <p><span class="text--smaller">SPEED</span></p>
+                            <p>TRIVIA</p>
+                        </div>
                     </div>
                 </div>
 

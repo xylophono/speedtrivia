@@ -1945,6 +1945,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {},
   data: function data() {
@@ -2036,6 +2040,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2064,6 +2070,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -3165,11 +3173,13 @@ var staticRenderFns = [
       _c("div", { staticClass: "home-header__content" }, [
         _c("i", { staticClass: "fas fa-info-circle home-header__about" }),
         _vm._v(" "),
-        _c("h1", [
-          _c("span", { staticClass: "text--smaller" }, [_vm._v("SPEED")])
-        ]),
-        _vm._v(" "),
-        _c("h1", [_vm._v("TRIVIA")])
+        _c("div", { staticClass: "logo" }, [
+          _c("p", [
+            _c("span", { staticClass: "text--smaller" }, [_vm._v("SPEED")])
+          ]),
+          _vm._v(" "),
+          _c("p", [_vm._v("TRIVIA")])
+        ])
       ])
     ])
   },
@@ -3179,11 +3189,13 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "question-card__logo" }, [
       _c("div", [
-        _c("p", { staticClass: "h2 text--smaller text--white" }, [
-          _vm._v("Speed")
-        ]),
-        _vm._v(" "),
-        _c("p", { staticClass: "h2 text--white" }, [_vm._v("Trivia")])
+        _c("div", { staticClass: "logo" }, [
+          _c("p", [
+            _c("span", { staticClass: "text--smaller" }, [_vm._v("SPEED")])
+          ]),
+          _vm._v(" "),
+          _c("p", [_vm._v("TRIVIA")])
+        ])
       ])
     ])
   }
@@ -3269,7 +3281,8 @@ var render = function() {
                 _c(
                   "button",
                   {
-                    staticClass: "button",
+                    staticClass:
+                      "button arrow-right button--white text--heading",
                     on: {
                       click: function($event) {
                         return _vm.goHome()
@@ -3293,9 +3306,13 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "question-card__logo" }, [
       _c("div", [
-        _c("p", { staticClass: "h2 text--smaller" }, [_vm._v("Speed")]),
-        _vm._v(" "),
-        _c("p", { staticClass: "h2" }, [_vm._v("Trivia")])
+        _c("div", { staticClass: "logo" }, [
+          _c("p", [
+            _c("span", { staticClass: "text--smaller" }, [_vm._v("SPEED")])
+          ]),
+          _vm._v(" "),
+          _c("p", [_vm._v("TRIVIA")])
+        ])
       ])
     ])
   }
@@ -3418,11 +3435,13 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "question-card__logo" }, [
       _c("div", [
-        _c("p", { staticClass: "h2 text--smaller text--pink" }, [
-          _vm._v("Speed")
-        ]),
-        _vm._v(" "),
-        _c("p", { staticClass: "h2 text--pink" }, [_vm._v("Trivia")])
+        _c("div", { staticClass: "logo logo--pink" }, [
+          _c("p", [
+            _c("span", { staticClass: "text--smaller" }, [_vm._v("SPEED")])
+          ]),
+          _vm._v(" "),
+          _c("p", [_vm._v("TRIVIA")])
+        ])
       ])
     ])
   }
@@ -15701,7 +15720,7 @@ function () {
     _classCallCheck(this, _default);
 
     this.endpoint = 'https://opentdb.com/api.php';
-    this.questions = 1;
+    this.questions = 3;
     this.categories = [{
       name: 'General Knowledge',
       endpoint: 9
