@@ -53,16 +53,33 @@ const app = new Vue({
             // }
          },
 
+         //Function to keep local and storage settings in sync
+         changeSetting: function(setting, value) {
+             this[setting] = value;
+             if(typeof(Storage) !== 'undefined') {
+                 localStorage[setting] = value;
+             }
+         },
+
         //Resets game data which functionally stops the game
         resetGame: function(){
             this.gameData = game.clearGameData();
         }
     },
+
     created: function() {
         //Need categories to populate home page, a blank set of game data to track state.
         this.categories = game.getCategories();
         this.speeds = game.getSpeeds();
         this.questionSpeed = this.speeds[0].duration;
         this.gameData = game.clearGameData();
+    },
+
+    mounted: function() {
+        //Once mounted we're gonna check if there's localstorage settings and if so override the defaults
+        if(typeof(Storage) !== 'undefined') {
+            if(localStorage.category) { this.category = parseInt(localStorage.category); }
+            if(localStorage.questionSpeed) { this.questionSpeed = parseInt(localStorage.questionSpeed); }
+        }
     }
 });

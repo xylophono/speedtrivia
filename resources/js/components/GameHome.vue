@@ -18,7 +18,7 @@
                 <ul class="categories">
                     <li v-for="(c, i) in $root.categories"
                     :key="i"
-                    @click="$root.category = i"
+                    @click="$root.changeSetting('category', i)"
                     :class="{
                         'active': $root.category == i
                     }">
@@ -30,7 +30,7 @@
                 <ul class="categories">
                     <li v-for="(s, i) in $root.speeds"
                     :key="i"
-                    @click="$root.questionSpeed = s.duration"
+                    @click="$root.changeSetting('questionSpeed', s.duration)"
                     :class="{
                         'active': $root.questionSpeed == s.duration
                     }">

@@ -3060,7 +3060,7 @@ var render = function() {
                 },
                 on: {
                   click: function($event) {
-                    _vm.$root.category = i
+                    return _vm.$root.changeSetting("category", i)
                   }
                 }
               },
@@ -3091,7 +3091,7 @@ var render = function() {
                 },
                 on: {
                   click: function($event) {
-                    _vm.$root.questionSpeed = s.duration
+                    return _vm.$root.changeSetting("questionSpeed", s.duration)
                   }
                 }
               },
@@ -15676,6 +15676,14 @@ var app = new Vue({
       //     window.navigator.vibrate(50);
       // }
     },
+    //Function to keep local and storage settings in sync
+    changeSetting: function changeSetting(setting, value) {
+      this[setting] = value;
+
+      if (typeof Storage !== 'undefined') {
+        localStorage[setting] = value;
+      }
+    },
     //Resets game data which functionally stops the game
     resetGame: function resetGame() {
       this.gameData = game.clearGameData();
@@ -15687,6 +15695,18 @@ var app = new Vue({
     this.speeds = game.getSpeeds();
     this.questionSpeed = this.speeds[0].duration;
     this.gameData = game.clearGameData();
+  },
+  mounted: function mounted() {
+    //Once mounted we're gonna check if there's localstorage settings and if so override the defaults
+    if (typeof Storage !== 'undefined') {
+      if (localStorage.category) {
+        this.category = parseInt(localStorage.category);
+      }
+
+      if (localStorage.questionSpeed) {
+        this.questionSpeed = parseInt(localStorage.questionSpeed);
+      }
+    }
   }
 });
 
