@@ -1949,10 +1949,52 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {},
   data: function data() {
     return {
+      about: false,
       started: false,
       splashTextArray: ['Here we go', 'Lets do this', 'Flex your thumbs', 'Take a breath', 'Clear your mind', "Trust your gut", "You got this", "Ready set go"],
       splashTextKey: 0
@@ -2070,6 +2112,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -3042,7 +3085,20 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "home" }, [
     _c("div", [
-      _vm._m(0),
+      _c("header", { staticClass: "home-header" }, [
+        _c("div", { staticClass: "home-header__content" }, [
+          _c("i", {
+            staticClass: "fas fa-info-circle home-header__about",
+            on: {
+              click: function($event) {
+                _vm.about = !_vm.about
+              }
+            }
+          }),
+          _vm._v(" "),
+          _vm._m(0)
+        ])
+      ]),
       _vm._v(" "),
       _c("main", { staticClass: "home-content" }, [
         _c("h2", { staticClass: "h3" }, [_vm._v("Category")]),
@@ -3161,6 +3217,40 @@ var render = function() {
             ])
           ]
         )
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.about
+      ? _c(
+          "div",
+          {
+            staticClass: "question-card question-card--no-delay",
+            class: {
+              "question-card--active": _vm.about
+            }
+          },
+          [
+            _c("div", { staticClass: "question-card__content" }, [
+              _c("div", { staticClass: "question-card__logo" }, [
+                _vm._m(2),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "question-card__quit",
+                    on: {
+                      click: function($event) {
+                        _vm.about = !_vm.about
+                      }
+                    }
+                  },
+                  [_c("i", { staticClass: "fas fa-times-circle" })]
+                )
+              ]),
+              _vm._v(" "),
+              _vm._m(3)
+            ])
+          ]
+        )
       : _vm._e()
   ])
 }
@@ -3169,18 +3259,12 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("header", { staticClass: "home-header" }, [
-      _c("div", { staticClass: "home-header__content" }, [
-        _c("i", { staticClass: "fas fa-info-circle home-header__about" }),
-        _vm._v(" "),
-        _c("div", { staticClass: "logo" }, [
-          _c("p", [
-            _c("span", { staticClass: "text--smaller" }, [_vm._v("SPEED")])
-          ]),
-          _vm._v(" "),
-          _c("p", [_vm._v("TRIVIA")])
-        ])
-      ])
+    return _c("div", { staticClass: "logo" }, [
+      _c("p", [
+        _c("span", { staticClass: "text--smaller" }, [_vm._v("SPEED")])
+      ]),
+      _vm._v(" "),
+      _c("p", [_vm._v("TRIVIA")])
     ])
   },
   function() {
@@ -3196,6 +3280,115 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("p", [_vm._v("TRIVIA")])
         ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("div", { staticClass: "logo logo--pink" }, [
+        _c("p", [
+          _c("span", { staticClass: "text--smaller" }, [_vm._v("SPEED")])
+        ]),
+        _vm._v(" "),
+        _c("p", [_vm._v("TRIVIA")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "text--left" }, [
+      _c("h1", { staticClass: "h3" }, [_vm._v("About SpeedTrivia")]),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c("p", [
+        _vm._v("SpeedTrivia is a VueJS trivia game powered by the "),
+        _c(
+          "a",
+          {
+            attrs: {
+              href: "https://opentdb.com/",
+              title: "Open Trivia Database",
+              target: "_blank"
+            }
+          },
+          [_vm._v("Open Trivia Database")]
+        ),
+        _vm._v(" API.")
+      ]),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c("p", [
+        _vm._v(
+          "SpeedTrivia uses local storage / cookies to save your settings. SpeedTrivia makes use of the "
+        ),
+        _c(
+          "a",
+          {
+            attrs: {
+              href: "https://opentdb.com/",
+              title: "Open Trivia Database",
+              target: "_blank"
+            }
+          },
+          [_vm._v("Open Trivia Database")]
+        ),
+        _vm._v(" and "),
+        _c(
+          "a",
+          {
+            attrs: {
+              href: "https://fonts.adobe.com",
+              title: "Adobe Fonts",
+              target: "_blank"
+            }
+          },
+          [_vm._v("Adobe Fonts")]
+        ),
+        _vm._v(
+          " who may have their own privacy policies. SpeedTrivia does not use an external analytics service."
+        )
+      ]),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c("p", [
+        _vm._v("You can view the SpeedTrivia code on "),
+        _c(
+          "a",
+          {
+            attrs: {
+              href: "https://github.com/xylophono/speedtrivia",
+              title: "Github",
+              target: "_blank"
+            }
+          },
+          [_vm._v("Github")]
+        )
+      ]),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c("p", [
+        _vm._v("SpeedTrivia is a "),
+        _c(
+          "a",
+          {
+            attrs: {
+              href: "https://www.xylophono.com/",
+              title: "xylophono",
+              target: "_blank"
+            }
+          },
+          [_vm._v("xylophono")]
+        ),
+        _vm._v(" project =)")
       ])
     ])
   }
@@ -3357,7 +3550,24 @@ var render = function() {
         "div",
         { staticClass: "question-card__content" },
         [
-          _vm._m(0),
+          _c("div", { staticClass: "question-card__logo" }, [
+            _c("div", [
+              _vm._m(0),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "question-card__quit",
+                  on: {
+                    click: function($event) {
+                      return _vm.quitGame()
+                    }
+                  }
+                },
+                [_c("i", { staticClass: "fas fa-times-circle" })]
+              )
+            ])
+          ]),
           _vm._v(" "),
           _c("p", [_vm._v(_vm._s(_vm.question))]),
           _vm._v(" "),
@@ -3399,19 +3609,6 @@ var render = function() {
         2
       ),
       _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "question-card__quit",
-          on: {
-            click: function($event) {
-              return _vm.quitGame()
-            }
-          }
-        },
-        [_c("i", { staticClass: "fas fa-times-circle" })]
-      ),
-      _vm._v(" "),
       _vm.isAnswered
         ? _c("div", { staticClass: "question-card__result" }, [
             _c("i", {
@@ -3433,16 +3630,12 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "question-card__logo" }, [
-      _c("div", [
-        _c("div", { staticClass: "logo logo--pink" }, [
-          _c("p", [
-            _c("span", { staticClass: "text--smaller" }, [_vm._v("SPEED")])
-          ]),
-          _vm._v(" "),
-          _c("p", [_vm._v("TRIVIA")])
-        ])
-      ])
+    return _c("div", { staticClass: "logo logo--pink" }, [
+      _c("p", [
+        _c("span", { staticClass: "text--smaller" }, [_vm._v("SPEED")])
+      ]),
+      _vm._v(" "),
+      _c("p", [_vm._v("TRIVIA")])
     ])
   }
 ]
@@ -15740,7 +15933,7 @@ function () {
     _classCallCheck(this, _default);
 
     this.endpoint = 'https://opentdb.com/api.php';
-    this.questions = 3;
+    this.questions = 8;
     this.categories = [{
       name: 'General Knowledge',
       endpoint: 9

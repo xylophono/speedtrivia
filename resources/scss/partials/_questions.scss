@@ -39,6 +39,7 @@
 
     .question-card__logo {
         margin-bottom: 4rem;
+        position: relative;
         
         div {
             display: inline-block;
@@ -59,8 +60,8 @@
     .question-card__quit {
         position: absolute;
         z-index: 2;
-        top: 1rem;
-        right: 1rem;
+        top: -1rem;
+        right: -1rem;
         font-size: 1.5rem;
         color: $pink;
         cursor: pointer;

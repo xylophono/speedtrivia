@@ -4,7 +4,7 @@
             
             <header class="home-header">
                 <div class="home-header__content">
-                    <i class="fas fa-info-circle home-header__about"></i>
+                    <i class="fas fa-info-circle home-header__about" @click="about = !about"></i>
                     <div class="logo">
                         <p><span class="text--smaller">SPEED</span></p>
                         <p>TRIVIA</p>
@@ -51,6 +51,7 @@
             </main>
         </div>
 
+        <!-- Splash Card -->
         <div
             v-if="started"
             class="question-card question-card--no-delay gradient--green"
@@ -84,6 +85,46 @@
 
         </div>
 
+        <!-- About Section -->
+
+        <div
+            v-if="about"
+            class="question-card question-card--no-delay"
+            :class="{
+                'question-card--active': about
+            }">
+
+            <div class="question-card__content">
+
+                <div class="question-card__logo">
+                    <div>
+                        <div class="logo logo--pink">
+                            <p><span class="text--smaller">SPEED</span></p>
+                            <p>TRIVIA</p>
+                        </div>
+                    </div>
+                    
+                    <div class="question-card__quit"
+                        @click="about = !about">
+                        <i class="fas fa-times-circle"></i>
+                    </div>
+                </div>
+
+                <div class="text--left">
+                    <h1 class="h3">About SpeedTrivia</h1>
+                    <br>
+                    <p>SpeedTrivia is a VueJS trivia game powered by the <a href="https://opentdb.com/" title="Open Trivia Database" target="_blank">Open Trivia Database</a> API.</p>
+                    <br>
+                    <p>SpeedTrivia uses local storage / cookies to save your settings. SpeedTrivia makes use of the <a href="https://opentdb.com/" title="Open Trivia Database" target="_blank">Open Trivia Database</a> and <a href="https://fonts.adobe.com" title="Adobe Fonts" target="_blank">Adobe Fonts</a> who may have their own privacy policies. SpeedTrivia does not use an external analytics service.</p>
+                    <br>
+                    <p>You can view the SpeedTrivia code on <a href="https://github.com/xylophono/speedtrivia" title="Github" target="_blank">Github</a></p>
+                    <br>
+                    <p>SpeedTrivia is a <a href="https://www.xylophono.com/" title="xylophono" target="_blank">xylophono</a> project =)</p>
+                </div>
+            </div>
+
+        </div>
+
     </div>
 </template>
 
@@ -94,6 +135,7 @@ export default {
 
     data: function() {
         return {
+            about: false,
             started: false,
             splashTextArray: [
                 'Here we go',
