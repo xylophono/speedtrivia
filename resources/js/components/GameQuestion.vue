@@ -93,7 +93,7 @@
                 
                 this.isAnswered = true;
                 this.questionTimerAnimation.pause();
-                clearInterval(this.questionTimerTimeout);
+                clearTimeout(this.questionTimerTimeout);
                 
                 //if an index was provided then the user selected an answer (instead of being timed out)
                 if(index !== null) {
@@ -120,6 +120,7 @@
 
             // Kill the timer and reset the game data to kill the current game
             quitGame: function() {
+                clearTimeout(this.questionTimerTimeout);
                 this.$root.resetGame();
             },
 
