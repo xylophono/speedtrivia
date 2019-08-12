@@ -5,16 +5,21 @@
             <header class="home-header">
                 <div class="home-header__content">
                     <i class="fas fa-info-circle home-header__about" @click="about = !about"></i>
-                    <div class="logo">
-                        <p><span class="text--smaller">SPEED</span></p>
-                        <p>TRIVIA</p>
+                    <div style="display: inline-block; margin: 0 auto; width: auto; text-align: left;">
+                        <div class="logo">
+                            <p><span class="text--smaller">SPEED</span></p>
+                            <p>TRIVIA</p>
+                        </div>
                     </div>
+                    
                 </div>
             </header>
 
             <main class="home-content">
                 
-                <h2 class="h3">Category</h2>
+                <p class="text--white text--center">8 Questions. Not much time. Ready?</p>
+                <br>
+                <h2 class="h3 text--white">Category</h2>
                 <ul class="categories">
                     <li v-for="(c, i) in $root.categories"
                     :key="i"
@@ -26,7 +31,7 @@
                     </li>
                 </ul>
 
-                <h2 class="h3">Speed</h2>
+                <h2 class="h3 text--white">Speed</h2>
                 <ul class="categories">
                     <li v-for="(s, i) in $root.speeds"
                     :key="i"
@@ -41,7 +46,7 @@
                 <br>
                 
                 <button
-                class="button arrow-right text--heading"
+                class="button arrow-right text--heading button--white"
                 @click="startTheGame()"
                 :disabled="started"
             >
