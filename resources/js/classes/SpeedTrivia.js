@@ -17,12 +17,20 @@ export default class {
                 endpoint: 17
             },
             {
+                name: 'Technology',
+                endpoint: 18
+            },
+            {
                 name: 'Geography',
                 endpoint: 22
             },
             {
                 name: 'History',
                 endpoint: 23
+            },
+            {
+                name: 'Politics',
+                endpoint: 24
             },
             {
                 name: 'Sports',
